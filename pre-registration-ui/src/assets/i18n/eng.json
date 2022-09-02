@@ -277,12 +277,12 @@
     "link_login": "LOGIN"
   },
   "login": {
-    "text": "Quick & Easy steps",
-    "sub_text": "Pre-register for",
+    "text": "Pre-registration steps",
+    "sub_text": "Register for a",
     "sub_text_UID": "Unique Identification Number",
-    "label_email_num": "Email ID or Phone Number",
+    "label_email_num": "Email Address or Phone Number",
     "label_otp": "Enter OTP",
-    "action_send": "Send OTP",
+    "action_send": "Request OTP",
     "action_resend": "Resend",
     "action_verify": "Verify",
     "logout_msg": "User has to login with the same mobile number/Email id to access the created applications.",
@@ -816,5 +816,5 @@
     "UI_1001": "Please enter between 3 to 50 characters",
     "UI_1003": "Please enter values starting with a character followed by 6 digits and ending with a character",
     "UI_1004": "Enter only 10 digit numbers"
-  }  
+  }
 }

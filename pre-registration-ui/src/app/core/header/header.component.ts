@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.translate.use(localStorage.getItem("langCode")); 
+    this.translate.use(localStorage.getItem("langCode"));
     this.textDir = localStorage.getItem("dir");
   }
   textDirection() {
@@ -55,32 +55,32 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   showMessage() {
-    let languagelabels ;
+    let languagelabels;
     this.dataStorageService
-    .getI18NLanguageFiles(localStorage.getItem("userPrefLanguage"))
-    .subscribe((response) => {
-      languagelabels = response["login"]["logout_msg"];
-      const data = {
-        case: "CONFIRMATION",
-        title: response["header"]["link_logout"],
-        message: languagelabels,
-        yesButtonText: response["dialog"]["action_ok"],
-        noButtonText: response["dialog"]["action_close"]
-      };
-      this.dialog
-        .open(DialougComponent, {
-          width: "400px",
-          data: data,
-        })
-        .afterClosed()
-        .subscribe((response) => {
-          if (response === true) {
-            localStorage.removeItem("loggedOutLang");
-            localStorage.removeItem("loggedOut");
-            this.authService.onLogout();
-          }
-        });
-    });
+      .getI18NLanguageFiles(localStorage.getItem("userPrefLanguage"))
+      .subscribe((response) => {
+        languagelabels = response["login"]["logout_msg"];
+        const data = {
+          case: "CONFIRMATION",
+          title: response["header"]["link_logout"],
+          message: languagelabels,
+          yesButtonText: response["dialog"]["action_ok"],
+          noButtonText: response["dialog"]["action_close"],
+        };
+        this.dialog
+          .open(DialougComponent, {
+            width: "400px",
+            data: data,
+          })
+          .afterClosed()
+          .subscribe((response) => {
+            if (response === true) {
+              localStorage.removeItem("loggedOutLang");
+              localStorage.removeItem("loggedOut");
+              this.authService.onLogout();
+            }
+          });
+      });
   }
 
   ngOnDestroy() {

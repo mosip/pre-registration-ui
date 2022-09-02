@@ -26,9 +26,10 @@
 }
 
 .form_wrapper {
-  margin: 4% 0%;
+  margin: 3% 0%;
   line-height: 2rem;
   height: 64vh;
+  text-align: center;
 }
 
 .form_fields_padding {
@@ -38,16 +39,20 @@
 }
 
 .heading {
-  font-size: 1.5rem;
+  font-size: 1rem;
+  padding: 2px;
   text-align: center;
   font-weight: 600;
-  
+}
+
+.form-group {
+  text-align: left;
 }
 
 .subHeading {
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-align: center;
-  font-weight: 250;
+  font-weight: bold;
 }
 
 mat-form-field {
@@ -84,7 +89,9 @@ button {
   color: lightgrey;
 }
 
-::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+::ng-deep
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
   color: lightgrey;
   border-bottom: 2px solid #22a8c9;
   border-bottom-left-radius: 1px;
@@ -98,11 +105,11 @@ button {
 }
 
 @media (max-width: 500px) {
-  .form_fields_padding {
-    margin-left: 16%;
+  .form_wrapper {
+    text-align: center;
   }
 }
-.captcha{
+.captcha {
   padding-bottom: 10px !important;
   transform: scale(0.8);
 }

@@ -4,15 +4,25 @@
 
 <div *ngIf="!showSpinner" class="wrapper" [dir]="dir">
   <div class="form_wrapper">
-    <div class="heading">
+    <div class="wrapper p-1">
+      <img
+        src="assets\img\coat.svg"
+        class="header--logo"
+        style="max-height: 180px"
+      />
+      <p class="heading">UGANDA IDENTIFICATION PRE-REGISTRATION SYSTEM</p>
+    </div>
+    <div>
       <span>{{ "login.text" | translate }}</span>
     </div>
 
     <div class="subHeading pinkText">
       <b>{{ "login.sub_text" | translate }} </b>
-      <span class="boldText"><b>{{ "login.sub_text_UID" | translate }}</b>  </span>
+      <span class="boldText"
+        ><b>{{ "login.sub_text_UID" | translate }}</b>
+      </span>
     </div>
-    <div >
+    <div>
       <div
         style="width: 38vw; max-width: 323px"
         [ngClass]="
@@ -21,7 +31,7 @@
             : 'form_fields_wrapper'
         "
       >
-        <div  *ngIf="showLanguageDropDown" >
+        <div *ngIf="showLanguageDropDown">
           <mat-form-field appearance="standard">
             <mat-select
               disableOptionCentering
@@ -41,7 +51,7 @@
         </div>
 
         <div *ngIf="showContactDetails">
-          <div [dir]="dir" >
+          <div [dir]="dir">
             <mat-form-field appearance="standard">
               <input
                 class="input_pri"
@@ -51,21 +61,29 @@
                 placeholder="{{ 'login.label_email_num' | translate }}"
                 title="{{ 'login.label_email_num' | translate }}"
                 id="inputFieldContact"
-                (input)="verifyInput()"  
+                (input)="verifyInput()"
                 required
               />
             </mat-form-field>
           </div>
         </div>
         <div *ngIf="enableCaptcha && showCaptcha">
-          <app-captcha [captchaSiteKey]="siteKey" [resetCaptcha]="resetCaptcha" (captchaEvent)="getCaptchaToken($event)"></app-captcha>
+          <app-captcha
+            [captchaSiteKey]="siteKey"
+            [resetCaptcha]="resetCaptcha"
+            (captchaEvent)="getCaptchaToken($event)"
+          ></app-captcha>
         </div>
         <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
         <p class="loading" *ngIf="loadingMessage != ''">{{ loadingMessage }}</p>
-        <div *ngIf="captchaError && !showOTP" class="error" style="margin-left: 55px">
+        <div
+          *ngIf="captchaError && !showOTP"
+          class="error"
+          style="margin-left: 55px"
+        >
           {{ "recaptcha.errorMessage" | translate }}
         </div>
-        <div [dir]="dir" *ngIf="showOTP" >
+        <div [dir]="dir" *ngIf="showOTP">
           <mat-form-field appearance="standard">
             <input
               autofocus="autofocus"
@@ -83,8 +101,7 @@
           <button
             mat-raised-button
             class="btn_axn-pri"
-            [disabled]="
-              !(inputContactDetails.length > 0 && enableSendOtp)"
+            [disabled]="!(inputContactDetails.length > 0 && enableSendOtp)"
             (click)="submit()"
           >
             {{ "login.action_send" | translate }}
