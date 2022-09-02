@@ -277,3 +277,6 @@ mat-keyboard-container mat-keyboard-key .mat-keyboard-key {
   border: 1px solid #ff4081;
   color: #ff4081;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

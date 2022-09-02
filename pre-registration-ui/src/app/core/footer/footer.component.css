@@ -10,12 +10,19 @@
   width: 100%;
   z-index: -1;
   margin-bottom: 2px;
-  background: white;
+  background: rgb(250, 250, 250);
+  border: solid 1px #e7e4e4;
 }
 
-.version-txt{
+.version-txt {
   font-size: 8px;
   font-family: "Roboto", sans-serif;
   font-weight: 100;
   display: block;
+  padding-left: 8px;
+}
+
+.wrapper {
+  display: flex;
+  font-size: xx-small;
 }

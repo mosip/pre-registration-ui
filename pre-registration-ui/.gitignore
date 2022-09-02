@@ -18,6 +18,7 @@ tmp/
 *.swp
 *~.nib
 local.properties
+package-lock.json
 .loadpath
 .DS_Store
 *.log
