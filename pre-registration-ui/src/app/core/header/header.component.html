@@ -19,7 +19,7 @@
         <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
       </div>
       <a *ngIf="!authService.isAuthenticated()" href="./" mat-list-item>
-        <img src="assets\logo-final.png" class="header--logo" style="max-height: 40px"/>
+        <img src="assets\logo-final.png" class="header--logo" style="max-height: 50px"/>
       </a>
       <a *ngIf="authService.isAuthenticated()" (click)="onLogoClick()" mat-list-item>
         <img src="assets\logo-final.png" class="header--logo" style="max-height: 40px"/>

@@ -133,7 +133,12 @@ body {
 }
 
 .wrapper {
-  background: rgba(255, 255, 255, 1) !important;
+  /*background: rgba(255, 255, 255, 1) !important;*/
+  background-image: url(./assets/LoginBackGround.png);
+           background-size: cover;
+           background-repeat: no-repeat;
+           background-position: center;
+           height:85vh;
 }
 
 :host ::ng-deep .ng2-pdf-viewer-container {
