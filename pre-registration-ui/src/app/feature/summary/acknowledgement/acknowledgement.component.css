@@ -72,9 +72,9 @@
 }
 
 .ack-book_later-btn {
-  background-color: #fff;
-  border: 1px solid #ff4081;
-  color: #ff4081;
+  background-color: #BCE0FD;
+  border: 1px solid #BCE0FD;
+  color: #020F59;
   padding: 0px 2rem;
   text-align: center;
   text-decoration: none;
@@ -84,10 +84,10 @@
   border-radius: 0;
 }
 .ack-continue-btn {
-  background-color: #ff4081;
+  background-color: #BCE0FD;
   border: none;
   border-radius: 0;
-  color: #fff;
+  color: #020F59;
   padding: 0px 2rem;
   text-align: center;
   text-decoration: none;
