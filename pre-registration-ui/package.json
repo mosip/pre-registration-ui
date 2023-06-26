@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "pre-dev": "ng serve --host 0.0.0.0 --base-href . --disable-host-check",
+    "other": "ng serve --proxy-config proxy.conf.json --ssl true",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
