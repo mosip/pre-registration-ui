@@ -44,7 +44,7 @@
 .user header {
   margin: 0;
   font-weight: bold;
-  color: #fd518c;
+  color: #020F59;
 }
 
 .readOnly {
@@ -388,7 +388,7 @@ mat-icon {
   color: white;
   min-height: 40px;
   padding: 10px;
-  background-color:rgb(11, 106, 130) ;
+  background-color:#020F59 ;
 }
 .fieldContent {
   padding: 10px;

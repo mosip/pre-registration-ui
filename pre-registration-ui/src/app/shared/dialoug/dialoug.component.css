@@ -28,7 +28,7 @@ mat-form-field {
 .consent-popup-title {
   font-size: 1rem;
   margin: 0px;
-  color: #fd518c;
+  color: #020F59;
 }
 .consent-popup-subtitle {
   font-size: 0.8rem;
@@ -62,7 +62,7 @@ mat-form-field {
   padding: 10px;
 }
 .mat-dialog-title {
-  color: #fd518c;
+  color: #020F59;
   font-size: 16px;
   text-transform: uppercase;
   border-bottom: 1px solid #fd518c;
@@ -70,16 +70,16 @@ mat-form-field {
 .btn-cancel {
   cursor: pointer;
   border-radius: 2px;
-  border: 1px solid #ff4081;
-  color: #ff4081;
-  background-color: white;
+  border: 1px solid #BCE0FD;
+  color: #020F59;
+  background-color: #BCE0FD;
 }
 .btn-submit {
   cursor: pointer;
   border-radius: 2px;
-  background-color: #ff4081;
+  background-color: #BCE0FD;
   border: none;
-  color: white;
+  color: #020F59;
 }
 .btn-submit-disabled {
   border-radius: 2px;
