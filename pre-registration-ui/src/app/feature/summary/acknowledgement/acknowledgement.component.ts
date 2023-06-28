@@ -436,7 +436,6 @@ export class AcknowledgementComponent implements OnInit, OnDestroy {
       this.sendNotification(this.applicantContactDetails, false);
     }, 500);
   }
-Debugger;
   getTemplate() {
     return new Promise((resolve) => {
       const subs = this.dataStorageService
