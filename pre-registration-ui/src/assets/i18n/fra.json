@@ -268,12 +268,15 @@
     ]
   },
   "header": {
-    "link_about": "Commencer",
-    "link_faq": "FAQ",
-    "link_contact": "CONTACT",
-    "link_applications": "Vos Applications",
-    "link_logout": "Connectez - Out",
-    "link_login": "S'IDENTIFIER"
+		"link_about": "GUIDE D'UTILISATION",
+		"link_faq": "FAQ",
+		"link_contact": "CONTACT",
+		"link_contact_us": "CONTACT",
+		"link_applications": "DOSSIERS",
+		"link_logout": "SE DÉCONNECTER",
+		"link_login": "S'IDENTIFIER",
+		"consent_form":"FORMULAIRE DE CONSENTEMENT",
+		"application_form":"FORMULAIRE DE DEMANDE"
   },
   "login": {
     "text": "Étapes rapides et faciles",
