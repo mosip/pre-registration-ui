@@ -263,11 +263,11 @@
 }
 
 .selected {
-  border: 1px solid #ff4081;
+  border: 1px solid #020F59;
 }
 
 .selected-card {
-  background-color: #ff4081 !important;
+  background-color: #3973ac !important;
   color: white !important;
 }
 
