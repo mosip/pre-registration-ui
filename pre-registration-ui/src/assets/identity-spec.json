@@ -364,7 +364,7 @@
             "description": "proofOfAddress",
             "labelName": {
               "ara": "إثبات العنوان",
-              "fra": "Address Proof",
+              "fra": "Justificatif de domicile",
               "eng": "Address Proof"
             },
             "controlType": "fileupload",
