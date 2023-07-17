@@ -1,0 +1,136 @@
+::ng-deep .mat-dialog-container {
+    padding: 10px 1.5rem 1.5rem 1.7rem;
+    border-radius: 0px;
+    color: #020F59;
+}
+
+.mat-flat-button{
+    background-color: #BCE0FD;
+}
+
+.body-height {
+    height: 80px;
+}
+
+.button-placer {
+    margin: 0 0 0 20px;
+}
+
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+    border-color: #020F59;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle{
+    background-color: #020F59;
+}
+
+
+::ng-deep .mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element {
+    background-color: #020F59;
+}
+
+.close-button-sizing {
+    color: red;
+    margin-left: 4px;
+    font-size: 12px;
+}
+
+.table-container td {
+    padding-right: 10px;
+    padding-top: 8px;
+}
+.consent-popup-title {
+    font-size: 1rem;
+    margin: 0px;
+    color: #020F59;
+}
+/* consent story desgin css */
+.consent-popup-subtitle {
+    font-size: 0.8rem;
+    margin: 0px;
+    font-weight: 600;
+}
+.accept-button {
+    margin: 10px auto;
+    color: #020F59;
+    background-color: #BCE0FD;
+    border-radius: 2px;
+}
+.accept-button-disabled {
+    margin: 10px auto;
+    color: #020F59 !important;
+    background-color: #BCE0FD;
+    opacity: 0.5;
+}
+
+.consentpopup-content {
+    font-size: 0.8rem;
+    max-height: 100px;
+}
+.consentpopup-content::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #f5f5f5;
+}
+.consentpopup-content::-webkit-scrollbar-thumb {
+    background-color: #020F59;
+}
+.consentpopup-content::-webkit-scrollbar {
+    width: 3px;
+    background-color: #f5f5f5;
+}
+
+.consent-popup-parent {
+    position: relative;
+}
+
+.consent-popup-cross {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 17px;
+    height: 16px;
+    background: transparent;
+    min-height: 29px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.consent-popup-cross-icon {
+    font-size: 1rem;
+}
+
+.checkbox-accept {
+    font-size: 0.8rem;
+}
+
+/* consent story desgin css  */
+
+.error-dialog {
+    margin-bottom: 15px;
+    background-color: #BCE0FD;
+}
+.mat-dialog-title{
+    color: #020F59;
+}
+
+.mat-button, .mat-icon-button, .mat-stroked-button {
+    color: #020F59;
+    background: #bce0fd;;
+}
+
+.icon-color{
+    color: #020F59;}
+
+.marg {
+    margin-top: 10px;
+}
+
+.marg-10 {
+    margin-top: 15px;
+}
+@media (max-width: 500px) {
+    .marg-10 {
+        margin-top: 5px;
+    }
+}
