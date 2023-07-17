@@ -440,13 +440,17 @@ export class AcknowledgementComponent implements OnInit, OnDestroy {
       this.sendNotification(this.applicantContactDetails, false);
     }, 500);
   }
-
   getTemplate() {
     return new Promise((resolve) => {
       const subs = this.dataStorageService
         .getGuidelineTemplate("Onscreen-Acknowledgement")
         .subscribe((response) => {
           this.guidelines = response["response"]["templates"];
+          // add the name to the guideline template
+          let contactNames = this.usersInfoArr.map(obj => obj.fullName).join(', ');
+                  this.guidelines.forEach( template => {
+                    template.fileText = template.fileText.replace('$name', contactNames);
+                  })
           //console.log(this.guidelines);
           resolve(true);
         });
