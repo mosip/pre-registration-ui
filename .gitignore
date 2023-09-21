@@ -30,3 +30,5 @@ test.txt
 **/*.iml
 .vscode
 authentication-demo-ui/keys/
+node_modules
+*/.scannerwork
