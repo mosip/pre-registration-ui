@@ -16,11 +16,9 @@ on:
       - '!release-branch'
       - release-1*
       - master
-      - 1.0.*
+      - 1.*
       - develop
-      - 1.1.*
-      - MOSIP-11719
-      - 1.2.*
+      - MOSIP*
 
 jobs:
   build-pre-registration-ui:
