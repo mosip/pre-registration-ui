@@ -5,22 +5,14 @@ on:
     types: [published]
   pull_request:
     types: [opened]
-    branches:
-      - '!release-branch'
-      - release-1*
-      - 1.*
-      - develop
-      - MOSIP*
   push:
     branches:
       - '!release-branch'
-      - release-1*
+      - release*
       - master
-      - 1.0.*
+      - 1.*
       - develop
-      - 1.1.*
-      - MOSIP-11719
-      - 1.2.*
+      - MOSIP*
 
 jobs:
   build-pre-registration-ui:
