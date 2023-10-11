@@ -30,4 +30,4 @@ dist/*
 coverage/*
 .editorconfig
 e2e/*
-proxy.conf.json
+proxy.confold.json
