@@ -536,7 +536,7 @@
       "noButtonText": "Non",
       "applicationLockConfirm":{
         "title":"Confirmation",
-        "message":"Êtes-vous sûr de vouloir soumettre les détails ? Une fois soumis, les détails ne peuvent pas être modifiés",
+        "message":"Êtes-vous sûr de vouloir soumettre cette demande de rendez-vous? Une fois soumise, il ne vous sera plus permis de la modifier",
         "yesButtonText": "Confirmer",
         "noButtonText": "Annuler"
       }

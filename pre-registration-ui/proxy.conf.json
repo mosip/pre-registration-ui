@@ -1,6 +1,6 @@
 {
     "/proxyapi": {
-      "target": "https://api-internal.gin-pilot.mosip.net/",
+      "target": "https://api-internal.gn-pilot.mosip.net/",
       "secure": true,
       "changeOrigin": true,
       "pathRewrite": {
