@@ -111,6 +111,10 @@ export class LoginComponent implements OnInit {
       );
       this.isCaptchaEnabled();
       this.loadLanguagesWithConfig();
+      let urlLangCode = this.router.url.split("/").pop();
+      if (this.languageSelectionArray.indexOf(urlLangCode) !== -1){
+      localStorage.setItem("langCode", urlLangCode);
+      }
       if (!localStorage.getItem("langCode")) {
         localStorage.setItem("langCode", this.languageSelectionArray[0]);
       }
