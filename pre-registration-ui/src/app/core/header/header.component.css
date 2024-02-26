@@ -15,7 +15,8 @@
   top: 0;
   position: fixed;
   z-index: 999;
-  background-color: #0b6a82;
+  /*background-color: #0b6a82;*/
+  background-color: #020F59;
   border-color: #707070;
   border-width: 1px;
   overflow-x: hidden;

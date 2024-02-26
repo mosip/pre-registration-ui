@@ -1,0 +1,39 @@
+<div class="consentpopup-content" >
+  <!-- based upon the matching condition the popup appears for consent -->
+  <div>
+    <!-- user redirection button for moving out -->
+    <span
+            *ngIf="data.case == 1"
+            class="consent-popup-title" mat-dialog-title><b>{{'contactUs.confirmation_header_success' | translate}}</b>
+    </span>
+    <span
+            *ngIf="data.case == 0"
+            class="consent-popup-title" mat-dialog-title><b>{{'contactUs.confirmation_header_error' | translate}}</b>
+    </span>
+    <span>
+      <button class="consent-popup-cross" mat-dialog-actions [mat-dialog-close]="data.case"  cdkFocusInitial>
+        <mat-icon class="consent-popup-cross-icon">close</mat-icon>
+      </button></span
+    >
+  </div>
+  <div mat-dialog-content class="consentpopup-content">
+    <div *ngIf="data.case == 1" class="marg">
+      {{'contactUs.confirmation_body_success' | translate}}
+    </div>
+
+    <div *ngIf="data.case == 0" class="marg">
+      {{'contactUs.confirmation_body_error' | translate}}
+    </div>
+  </div>
+
+  <div mat-dialog-actions>
+    <button
+            class="accept-button marg-10"
+            mat-button
+            [mat-dialog-close]="data.case"
+            cdkFocusInitial
+    >
+      OK
+    </button>
+  </div>
+</div>

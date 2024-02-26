@@ -19,16 +19,26 @@
         <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
       </div>
       <a *ngIf="!authService.isAuthenticated()" href="./" mat-list-item>
-        <img src="assets\logo-final.png" class="header--logo" style="max-height: 40px"/>
+        <img src="assets\logo-final.png" class="header--logo" style="max-height: 50px"/>
       </a>
       <a *ngIf="authService.isAuthenticated()" (click)="onLogoClick()" mat-list-item>
         <img src="assets\logo-final.png" class="header--logo" style="max-height: 40px"/>
       </a>
       <!-- <div style="margin-left:5px;"><a routerLink="/" class="logo">logo</a></div> -->
       <mat-nav-list class="list-item">
-        <a mat-list-item routerLink="/about-us">{{ 'header.link_about' | translate }}</a>
+      <!--  <a mat-list-item routerLink="/about-us">{{ 'header.link_about' | translate }}</a>
         <a mat-list-item routerLink="/faq">{{ 'header.link_faq' | translate }}</a>
         <a mat-list-item routerLink="/contact">{{ 'header.link_contact' | translate }}</a>
+        -->
+       <!--mise à jour menu -->
+       
+       <a mat-list-item class="wuri-list-item" routerLink="/about-us">{{ 'header.link_about' | translate }}</a>
+       <a mat-list-item class="wuri-list-item" href="assets/consentement.pdf"target="_blank">{{ 'header.consent_form' | translate }}</a>
+       <a mat-list-item class="wuri-list-item" href="assets/Formulaire de demande.pdf"target="_blank">{{ 'header.application_form' | translate }}</a>
+       <a mat-list-item class="wuri-list-item" routerLink="/faq">{{ 'header.link_faq' | translate }}</a>    
+      <!-- <a mat-list-item class="wuri-list-item" routerLink="/contact-us">{{ 'header.link_contact_us' | translate }}</a> -->
+      
+        <!--fin mise à jour menu -->
       </mat-nav-list>
       <span class="spacer"></span>
       <mat-nav-list *ngIf="!authService.isAuthenticated()" class="list-item">

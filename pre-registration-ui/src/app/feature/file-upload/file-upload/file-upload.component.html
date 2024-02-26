@@ -35,25 +35,22 @@
           <div class="fieldContainer" [ngStyle]="document.containerStyle">
             <div class="fieldHeader" [ngStyle]="document.headerStyle">
               <!-- Create container header with label in user's login lang -->
-              <mat-label>{{document.labelName[userPrefLanguage]}} : </mat-label>
+              <mat-label>{{document.name}} : </mat-label>
               <span *ngIf="document.required" class="required-annotation">*</span>
-            </div>
+            </div> 
             <div class="fieldContent" [ngStyle]="document.containerStyle">
               <div>
-                <mat-form-field *ngIf="displayHidden">
-                  <input matInput [formControlName]="document.id" />
-                </mat-form-field>
-                <mat-form-field class="file-upload__input">
-                  <mat-label>{{document.labelName[userPrefLanguage]}}</mat-label>
-                  <mat-select #ref (selectionChange)="changeStatus(ref, i)" [(value)]="document.selectedDocName"
-                    disableOptionCentering placeholder="{{ document.code }}" (selectionChange)="selectChange($event, i)"
-                    [disabled]="disableNavigation ||  readOnlyMode || (document.code === 'POA' && sameAsselected ? true : false)">
-                    <!-- (openedChange)="openedChange(i, $event)" -->
-                    <mat-option *ngFor="let ValidDocument of document.documentTypes" value="{{ ValidDocument.code }}">
-                      {{ ValidDocument.name }}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
+                <!--elhadj-->
+                  <mat-form-field class="file-upload__input">
+            <mat-select #ref (selectionChange)="changeStatus(ref, i)" [(value)]="document.selectedDocName"
+                        disableOptionCentering placeholder="{{ document.name }}" (selectionChange)="selectChange($event, i)"
+                        [disabled]="document.code === 'POA' && sameAsselected ? true : false">
+              <mat-option *ngFor="let ValidDocument of document.documentTypes" value="{{ ValidDocument.code }}">
+                {{ ValidDocument.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+           <!--fin elhadj-->
                 <mat-form-field class="file-upload__docrefid">
                   <mat-label>{{ documentLabels.text_docrefid }}</mat-label>
                   <input matInput value="{{document.selectedRefNumber}}" (focusout)="handleDocRefInput($event, document.code)"

@@ -6,7 +6,7 @@
 }
 
 .time-selection__title-card {
-  color: #ff4081;
+  color: #020F59;
   padding: 0px;
   display: flex;
   align-items: center;
@@ -18,7 +18,7 @@
   position: relative;
 }
 .time-selection__note-text{
-  color: #ff4081;
+  color: #020F59;
   display: flex;
   align-items: center;
   white-space: nowrap;
@@ -263,11 +263,11 @@
 }
 
 .selected {
-  border: 1px solid #ff4081;
+  border: 1px solid #020F59;
 }
 
 .selected-card {
-  background-color: #ff4081 !important;
+  background-color: #3973ac !important;
   color: white !important;
 }
 
