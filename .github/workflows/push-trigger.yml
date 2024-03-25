@@ -34,8 +34,7 @@ jobs:
             BUILD_ARTIFACT: 'pre-registration-ui'
       fail-fast: false
     name: ${{ matrix.SERVICE_NAME }}
-    uses: abhishek8shankar/kattu/.github/workflows/docker-build.yml@develop
-    with:
+    uses: mosip/kattu/.github/workflows/docker-build.yml@master
       SERVICE_LOCATION: ${{ matrix.SERVICE_LOCATION }}
       SERVICE_NAME: ${{ matrix.SERVICE_NAME }}
       NPM_BUILD: ${{ matrix.NPM_BUILD }}
