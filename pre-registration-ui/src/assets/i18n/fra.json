@@ -577,7 +577,7 @@
     "action_add": "Ajouter",
     "action_close": "Fermer",
     "action_add_to_slot": "Ajouter à la fente",
-    "navigation_alert": "Êtes-vous sûr de vouloir quitter le site car les données saisies ne seront pas enregistrées. Veuillez confirmer"
+    "navigation_alert": "Certaines modifications non enregistrées sur ce formulaire seront perdues si vous décidez de quitter le formulaire. Souhaitez-vous vous éloigner?"
   },
   "centerSelection": {
     "title": " Rendez-vous du livre ",

@@ -582,7 +582,7 @@
     "action_add": "Add",
     "action_close": "Close",
     "action_add_to_slot": "Add to Slot",
-    "navigation_alert": "Are you sure you would like to navigate away as data entered will not be saved. Please confirm"
+    "navigation_alert": "There are unsaved changes on this form that will be lost if you decide to navigate away. Would you like to navigate away?"
   },
   "centerSelection": {
     "title": " Book Appointment ",
