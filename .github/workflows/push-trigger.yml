@@ -16,7 +16,7 @@ on:
 
 jobs:
   build-pre-registration-ui:
-    uses: mosip/kattu/.github/workflows/npm-build.yml@develop
+    uses: mosip/kattu/.github/workflows/npm-build.yml@master
     with:
       SERVICE_LOCATION: pre-registration-ui
       BUILD_ARTIFACT: pre-registration-ui
