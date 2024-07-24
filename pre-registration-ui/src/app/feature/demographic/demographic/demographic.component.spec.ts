@@ -12,7 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationService } from 'src/app/core/services/registration.service';
 import { BookingService } from '../../booking/booking.service';
 import { Router } from '@angular/router';
-import { MatKeyboardModule } from 'ngx7-material-keyboard';
+import { MatKeyboardModule } from '@ngx-material-keyboard/core';
 
 class MockService {
   user = {
