@@ -458,7 +458,7 @@
     "name" : "طلب",
     "action_modify_information": "تعديل المعلومات",
     "action_modify_appointment": "كتاب / تعديل موعد",
-    "action_cre_application": "التسجيل المسبق ",
+    "action_cre_application": "إنشاء تطبيق جديد ",
     "action_lost_uin": "UIN ضائع",
     "action_update_registration": "تحديث التسجيل",
     "card": {

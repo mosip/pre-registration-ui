@@ -457,7 +457,7 @@
     "name" : "Application",
     "action_modify_information": "Modify Information",
     "action_modify_appointment": "Book/Modify Appointment",
-    "action_cre_application": "Pre Registration ",
+    "action_cre_application": "Create Application",
     "action_lost_uin": "Lost UIN ",
     "action_update_registration": "Update Registration ",
     "card": {

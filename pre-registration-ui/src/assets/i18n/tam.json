@@ -456,7 +456,7 @@
 		"name" : "விண்ணப்பம்",
 		"action_modify_information": "தகவலை மாற்றவும்",
 		"action_modify_appointment": "நியமனம் புத்தகம் / மாற்றியமைத்தல்",
-		"action_cre_application": "முன் பதிவு ",
+		"action_cre_application": "புதிய பயன்பாட்டை உருவாக்கவும் ",
     	"action_lost_uin": "இழந்தது UIN ",
     	"action_update_registration": "பதிவை புதுப்பிக்கவும் ",
 		"card": {

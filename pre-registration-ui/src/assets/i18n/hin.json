@@ -456,7 +456,7 @@
 		"name" : "आवेदन",
 		"action_modify_information": "सूचना संशोधित करें",
 		"action_modify_appointment": "बुक/संशोधित अपॉइंटमेंट",
-		"action_cre_application": "पूर्व पंजीकरण ",
+		"action_cre_application": "नया एप्लिकेशन बनाएं",
     	"action_lost_uin": "खो गया UIN ",
     	"action_update_registration": "पंजीकरण अपडेट करें ",
 		"card": {

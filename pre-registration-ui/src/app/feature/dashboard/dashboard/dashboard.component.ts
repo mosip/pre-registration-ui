@@ -187,6 +187,7 @@ export class DashBoardComponent implements OnInit, OnDestroy {
    * @memberof DashBoardComponent
    */
   getUsers() {
+    this.isFetched = false;
     const sub = this.dataStorageService
       .getAllApplications(this.loginId)
       .subscribe(
@@ -223,6 +224,7 @@ export class DashBoardComponent implements OnInit, OnDestroy {
               this.users.push(applicant);
             }
           }
+          this.isFetched = true;
         },
         (error) => {
           //This is a fail safe operation since for first time login
@@ -237,8 +239,6 @@ export class DashBoardComponent implements OnInit, OnDestroy {
             this.isFetched = true;
             return;
           }
-        },
-        () => {
           this.isFetched = true;
         }
       );

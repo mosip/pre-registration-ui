@@ -33,19 +33,6 @@
           {{ "dashboard.action_cre_application" | translate }}
         </button></span
       >
-      <span>
-        <!-- class="create-app-btn" -->
-        <button  style="margin-right: 20px; margin-top: 10px" class="btn_axn-pri page_btn" (click)="onNewLostUinApplication()">
-          <img src="assets\Create new application.png" alt="New application" class="create-app-img" />
-          {{ "dashboard.action_lost_uin" | translate }}
-        </button></span
-      >
-      <span>
-        <button  style="margin-right: 20px; margin-top: 10px"  class="btn_axn-pri page_btn" (click)="onNewUpdateApplication()">
-          <img src="assets\Create new application.png" alt="New application" class="create-app-img" />
-          {{ "dashboard.action_update_registration" | translate }}
-        </button></span
-      >
     </div>
   </div>
   <div class="spinner" *ngIf="!isFetched">
@@ -108,16 +95,6 @@
               <table>
                 <caption>{{'dashboard.name' | translate}}</caption>
                 <tr>
-                  <td class="column1">{{ "dashboard.card.text_type" | translate }}</td>
-                  <td
-                    [ngClass]="
-                      user.name.length > 30
-                        ? 'application-value user__name--wordwrap'
-                        : 'application-value'
-                    "
-                  >{{ user.bookingType }}</td>
-                </tr>
-                <tr *ngIf="user.name != ''">
                   <td class="column1">{{ "dashboard.card.text_name" | translate }}</td>
                   <td
                     [ngClass]="
@@ -189,7 +166,7 @@
                   user.status === appStatusCodes.pending ||
                   user.status === appStatusCodes.incomplete
                 "
-                [disabled]="disableModifyDataButton || user.bookingType != newPreRegApplication"
+                [disabled]="disableModifyDataButton"
                 (click)="onModifyInformation(user)"
               >
                 <img
@@ -206,7 +183,6 @@
                   !(user.status === appStatusCodes.pending ||
                   user.status === appStatusCodes.incomplete)
                 "
-                [disabled]="user.bookingType != newPreRegApplication"
                 (click)="onModifyInformation(user)"
               >
                 <img
