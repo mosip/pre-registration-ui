@@ -438,6 +438,7 @@
       "msg11": "Veuillez confirmer que vous souhaitez supprimer le fichier ",
       "msg12": "Veuillez saisir uniquement du texte ou des chiffres",
       "msg13": "Veuillez entrer seulement 50 caractères ou moins",
+      "msg14": "Le fichier protégé par mot de passe n'est pas autorisé au téléchargement",
       "title_confirm": "Supprimer",
       "button_cancel": "Annuler",
       "none": "aucun"

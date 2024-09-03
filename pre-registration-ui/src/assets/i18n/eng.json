@@ -435,6 +435,7 @@
       "msg11": "Please confirm that you want to delete file ",
       "msg12": "Please enter only text or numbers",
       "msg13": "Please enter only 50 characters or less",
+      "msg14": "Password-protected file is not allowed for upload",
       "title_confirm": "Delete",
       "button_cancel": "Cancel",
       "none": "None"
