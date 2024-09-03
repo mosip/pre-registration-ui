@@ -1178,6 +1178,7 @@ export class FileUploadComponent implements OnInit, OnDestroy {
         },
         (error) => {
           this.showErrorMessage(error, this.messagelabels.uploadDocuments.msg7);
+          this.showErrorMessage(error, this.messagelabels.uploadDocuments.msg14);
           this.fileInputVariable.nativeElement.value = "";
           this.disableNavigation = false;
         },
