@@ -1177,8 +1177,11 @@ export class FileUploadComponent implements OnInit, OnDestroy {
           } 
         },
         (error) => {
-          this.showErrorMessage(error, this.messagelabels.uploadDocuments.msg7);
-          this.showErrorMessage(error, this.messagelabels.uploadDocuments.msg14);
+          if (this.showPasswordErrorMessage){
+            this.showPasswordErrorMessage(error);
+          } else {
+            this.showErrorMessage(error, this.messagelabels.uploadDocuments.msg7);
+          }
           this.fileInputVariable.nativeElement.value = "";
           this.disableNavigation = false;
         },
@@ -1189,6 +1192,10 @@ export class FileUploadComponent implements OnInit, OnDestroy {
       );
     this.formData = new FormData();
     this.subscriptions.push(subs);
+  }
+
+  private showPasswordErrorMessage(error: any): void {
+    this.showErrorMessage(error, this.messagelabels.uploadDocuments.msg14);
   }
 
   /**
