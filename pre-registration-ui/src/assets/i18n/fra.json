@@ -735,6 +735,7 @@
     "PRG_PAM_DOC_021": "Le document est déjà présent",
     "PRG_PAM_DOC_022": "DocumentId n'appartient pas à l'Id de pré-inscription",
     "PRG_PAM_DOC_024": "Le tableau des documents ne peut pas être mis à jour par ce statut",
+    "PRG_PAM_DOC_025": "Le fichier protégé par mot de passe n'est pas autorisé au téléchargement",
     "PRG_PAM_ACK_001": "Le numéro de mobile ou l'identifiant de messagerie est manquant",
     "PRG_PAM_ACK_002": "Les champs obligatoires sont manquants",
     "PRG_PAM_ACK_003": "Exception de requête http Json",

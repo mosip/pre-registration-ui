@@ -1177,8 +1177,8 @@ export class FileUploadComponent implements OnInit, OnDestroy {
           } 
         },
         (error) => {
-          if (this.showPasswordErrorMessage){
-            this.showPasswordErrorMessage(error);
+          if (error.apiErrorCodes="PRG_PAM_DOC_025"){
+            this.showErrorMessage(error, this.messagelabels.uploadDocuments.msg14);
           } else {
             this.showErrorMessage(error, this.messagelabels.uploadDocuments.msg7);
           }
@@ -1192,10 +1192,6 @@ export class FileUploadComponent implements OnInit, OnDestroy {
       );
     this.formData = new FormData();
     this.subscriptions.push(subs);
-  }
-
-  private showPasswordErrorMessage(error: any): void {
-    this.showErrorMessage(error, this.messagelabels.uploadDocuments.msg14);
   }
 
   /**

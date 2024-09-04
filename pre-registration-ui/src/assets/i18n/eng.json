@@ -748,6 +748,7 @@
     "PRG_PAM_DOC_021": "Document is alredy present",
     "PRG_PAM_DOC_022": "DocumentId is not belongs to the pre-registration Id",
     "PRG_PAM_DOC_024": "Document table not able to update by this status",
+    "PRG_PAM_DOC_025": "Password-protected file is not allowed for upload",
     "PRG_PAM_ACK_001": "Mobile number or Email Id is missing",
     "PRG_PAM_ACK_002": "Mandatory fields are missing",
     "PRG_PAM_ACK_003": "Json http request exception",
