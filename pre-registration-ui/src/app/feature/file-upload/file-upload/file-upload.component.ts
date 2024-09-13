@@ -1177,7 +1177,7 @@ export class FileUploadComponent implements OnInit, OnDestroy {
           } 
         },
         (error) => {
-          if (error.error.errors[0].errorCode !== null && error.error.errors[0].errorCode === "PRG_PAM_DOC_025") {
+          if (error && error.error && error.error.errors && error.error.errors.length > 0 && error.error.errors[0].errorCode === "PRG_PAM_DOC_025"){
             this.showErrorMessage(error, this.messagelabels.uploadDocuments.msg14);
           } else {
             this.showErrorMessage(error, this.messagelabels.uploadDocuments.msg7);
