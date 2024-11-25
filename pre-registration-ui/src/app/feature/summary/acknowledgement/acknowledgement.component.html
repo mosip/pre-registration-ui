@@ -16,6 +16,12 @@
         <div class="ack__header-container" [dir]="ackData.appLangCodeDir">
           <table>
             <caption>{{'quick_guide.Acknowledgement.tablename' | translate}}</caption>
+            <thead>
+              <tr style="display: none">
+                <th>label</th>
+                <th>value</th>
+              </tr>
+            </thead>
             <tr>
               <td>{{ ackData.preRegIdLabels}} : </td>
               <td><strong>{{ ackData.preRegId}}</strong></td>
@@ -58,7 +64,7 @@
         </div>
         <div [dir]="ackData.appLangCodeDir">
           <div id="body-container" *ngIf="ackData.regCntrNames" class="ack__body-container">
-            <table id="table-container" aria-describedby="acknowledgement-data">
+            <table id="table-container" aria-describedby="acknowledgement-data" role="presentation">
               <tr *ngIf="ackData.nameValues.trim() != ''">
                 <td>{{ ackData.labelNames }} : </td>
                 <td><strong>{{ ackData.nameValues }}</strong></td>
@@ -73,7 +79,7 @@
         <div id="guidelines-container" class="ack__guidelines-container" [dir]="ackData.appLangCodeDir">
           <span *ngFor="let langCode of ackData.appLangCode">
             <div class="spacer"></div>
-            <table *ngIf="guidelines.length !== 0" class="ack__guidelines" aria-describedby="acknowledgement-guideline">
+            <table *ngIf="guidelines.length !== 0" class="ack__guidelines" aria-describedby="acknowledgement-guideline" role="presentation">
               <tr *ngFor="let guideline of ackData[langCode]">
                 <td class="inner-guideline-content">{{ guideline }}</td>
               </tr>

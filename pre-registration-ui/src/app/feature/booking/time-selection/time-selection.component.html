@@ -190,7 +190,7 @@
             selectedCard !== undefined
           "
         >
-          <table class="time-selection__name-list" aria-describedby="time-selection-name-list">
+          <table class="time-selection__name-list" aria-describedby="time-selection-name-list" role="presentation">
             <tr
               class="time-selection__name-list-item"
               *ngFor="
@@ -202,7 +202,7 @@
             >
               <td>{{ item.fullName }}</td>
               <td>
-                <mat-icon (click)="itemDelete(j)" class="name-delete-button"
+                <mat-icon (click)="itemDelete(j)" role="button" [tabIndex]="j" class="name-delete-button"
                   >close</mat-icon
                 >
               </td>
@@ -216,7 +216,7 @@
           {{ "timeSelection.text_available" | translate }}
         </div>
         <div>
-          <table class="time-selection__name-list" aria-describedby="time-selection-name-list">
+          <table class="time-selection__name-list" aria-describedby="time-selection-name-list" role="presentation">
             <tr
               class="time-selection__name-list-item"
               *ngFor="let item of deletedNames; let k = index"
@@ -225,6 +225,8 @@
               <td>
                 <mat-icon
                   (click)="addItem(k)"
+                  role="button"
+                  [tabindex]="k"
                   [ngClass]="
                     disableAddButton
                       ? 'name-delete-button disable_add'
