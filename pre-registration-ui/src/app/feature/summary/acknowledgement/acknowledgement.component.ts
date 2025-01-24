@@ -425,13 +425,9 @@ export class AcknowledgementComponent implements OnInit, OnDestroy {
   }
 
   async apiCalls() {
-    return new Promise(async (resolve) => {
-      this.formatDateTime();
-      await this.qrCodeForUser();
-      await this.getTemplate();
-     
-      resolve(true);
-    });
+    this.formatDateTime();
+    await this.qrCodeForUser();
+    await this.getTemplate();
   }
 
   async qrCodeForUser() {
