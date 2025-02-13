@@ -31,7 +31,7 @@ import {
   MatKeyboardService,
   MatKeyboardRef,
   MatKeyboardComponent,
-} from "ngx7-material-keyboard";
+} from "@ngx-material-keyboard/core";
 import { LogService } from "src/app/shared/logger/log.service";
 import { FormDeactivateGuardService } from "src/app/shared/can-deactivate-guard/form-guard/form-deactivate-guard.service";
 import { Subscription } from "rxjs";
