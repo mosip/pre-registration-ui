@@ -32,8 +32,8 @@
     },
     "spa": {
       "name": "Spanish",
-      "nativeName": "Spanish",
-      "locale": "sp_IN"
+      "nativeName": "Española",
+      "locale": "es_ES"
     }
   }
 }
