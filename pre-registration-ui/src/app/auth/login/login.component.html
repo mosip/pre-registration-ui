@@ -102,18 +102,6 @@
           {{ "login.action_verify" | translate }}
         </button>
       </div>
-
-      <div *ngIf="showResend">
-        <button
-          mat-raised-button
-          class="btn_axn-pri"
-          disabled="{{ disableBtn }}"
-          (click)="submit()"
-        >
-          {{ "login.action_resend" | translate }}
-        </button>
-      </div>
-
       <div class="pinkText boldText" id="timer">
         <span>{{ "login.otp_valid_label" | translate }}&nbsp;</span
         ><span id="minutesSpan">{{ minutes }}</span
