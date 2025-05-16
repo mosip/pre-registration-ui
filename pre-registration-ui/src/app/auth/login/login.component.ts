@@ -9,6 +9,7 @@ import { RegistrationService } from "src/app/core/services/registration.service"
 import { ConfigService } from "src/app/core/services/config.service";
 import * as appConstants from "../../app.constants";
 import LanguageFactory from "../../../assets/i18n";
+import moment from "moment";
 
 @Component({
   selector: "app-login",
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit {
   secondaryLang = "";
   showSendOTP = true;
   showResend = false;
+  loadingMessage: string;
   showVerify = false;
   showContactDetails = true;
   showOTP = false;
@@ -66,17 +68,155 @@ export class LoginComponent implements OnInit {
     private configService: ConfigService
   ) {
     translate.setDefaultLang("eng");
-    localStorage.clear();
+    // localStorage.clear();
   }
 
   ngOnInit() {
     localStorage.setItem("langCode", "eng");
     this.showSpinner = true;
-    this.loadConfigs();
+    //this.loadConfigs();
     if (this.authService.isAuthenticated()) {
       this.authService.onLogout();
     }
+    this.loadConfigs();
+    if (this.router.url.includes(`${localStorage.getItem("langCode")}`)) {
+      this.handleBrowserReload();
+    }
   }
+
+  handleBrowserReload() {
+    let otp_sent_time = null;
+    if (localStorage.getItem("otp_sent_time") != null) {
+      otp_sent_time = localStorage.getItem("otp_sent_time").endsWith("Z")
+        ? localStorage.getItem("otp_sent_time")
+        : localStorage.getItem("otp_sent_time") + "Z";
+    }
+    const user_email_or_phone = localStorage.getItem("user_email_or_phone");
+    console.log(`otp_sent_time: ${otp_sent_time}`);
+    if (otp_sent_time && user_email_or_phone) {
+      let otpSentTime = moment(otp_sent_time).toISOString();
+      //console.log(`otpSentTime: ${otpSentTime}`);
+      let currentTime = moment().toISOString();
+      //console.log(`currentTime: ${currentTime}`);
+      let otpExpiryIntervalInSeconds = Number(
+        this.configService.getConfigByKey(
+          appConstants.CONFIG_KEYS.mosip_kernel_otp_expiry_time
+        )
+      );
+      if (isNaN(otpExpiryIntervalInSeconds)) {
+        otpExpiryIntervalInSeconds = 120; //2 mins by default
+      }
+      //console.log(`otpExpiryIntervalInSeconds: ${otpExpiryIntervalInSeconds}`);
+      var timeLapsedInSeconds = moment(currentTime).diff(
+        moment(otpSentTime),
+        "seconds"
+      );
+      //console.log(`timeLapsedInSeconds: ${timeLapsedInSeconds}`);
+      if (timeLapsedInSeconds <= otpExpiryIntervalInSeconds) {
+        console.log("otp interval not yet expired");
+        //console.log(this.timer);
+        let newOtpIntervalInSeconds =
+          otpExpiryIntervalInSeconds - timeLapsedInSeconds;
+        console.log(`newOtpIntervalInSeconds: ${newOtpIntervalInSeconds}`);
+        if (JSON.parse(localStorage.getItem("show_captcha"))) {
+          this.showCaptcha = true;
+        } else {
+          this.showCaptcha = false;
+        }
+        this.errorMessage = "";
+        this.inputOTP = "";
+        //this.showResend = false;
+        this.showOTP = true;
+        this.showSendOTP = false;
+        this.showContactDetails = false;
+        this.enableSendOtp = false;
+        this.inputContactDetails = user_email_or_phone;
+        let mins = 0;
+        if (newOtpIntervalInSeconds >= 60) {
+          mins = newOtpIntervalInSeconds / 60;
+          mins = Math.floor(mins);
+        }
+        if (mins < 10) {
+          this.minutes = "0" + mins;
+        } else {
+          this.minutes = String(mins);
+          // document.getElementById("minutesSpan")!.innerText = this.minutes;
+        }
+        let secs = newOtpIntervalInSeconds % 60;
+        if (secs < 10) {
+          this.seconds = "0" + secs;
+        } else {
+          this.seconds = String(secs);
+          // document.getElementById("secondsSpan")!.innerText = this.seconds;
+        }
+        this.timer = setInterval(this.timerFn, 1000);
+      } else {
+        console.log("otp interval expired");
+        localStorage.removeItem("otp_sent_time");
+        localStorage.removeItem("user_email_or_phone");
+        localStorage.removeItem("show_captcha");
+      }
+    }
+  }
+
+  timerFn = () => {
+    let secValue,
+      minValue = 0;
+    if (
+      document.getElementById("timer") &&
+      document.getElementById("timer").style.visibility == "visible" &&
+      document.getElementById("secondsSpan") &&
+      document.getElementById("secondsSpan").innerText &&
+      document.getElementById("minutesSpan") &&
+      document.getElementById("minutesSpan").innerText
+    ) {
+      secValue = Number(document.getElementById("secondsSpan").innerText);
+      minValue = Number(document.getElementById("minutesSpan").innerText);
+    } else {
+      secValue = Number(this.seconds);
+      minValue = Number(this.minutes);
+      if (document.getElementById("timer")) {
+        document.getElementById("timer").style.visibility = "visible";
+      }
+    }
+    if (secValue === 0) {
+      secValue = 60;
+      if (minValue === 0) {
+        // console.log("redirecting to initial phase on completion of timer");
+        // redirecting to initial phase on completion of timer
+        this.showContactDetails = true;
+        this.showSendOTP = true;
+        //this.showResend = true;
+        this.showOTP = false;
+        this.showVerify = false;
+        this.enableSendOtp = true;
+        if (this.enableCaptcha) {
+          this.showCaptcha = true;
+          this.enableSendOtp = false;
+        }
+        if (document.getElementById("minutesSpan")) {
+          document.getElementById("minutesSpan").innerText = this.minutes;
+        }
+        if (document.getElementById("timer")) {
+          document.getElementById("timer").style.visibility = "hidden";
+        }
+        clearInterval(this.timer);
+        return;
+  }
+      if (document.getElementById("minutesSpan") &&
+        document.getElementById("minutesSpan").innerText) {
+        document.getElementById("minutesSpan").innerText = "0" + (minValue - 1);
+      }
+    }
+   if (document.getElementById("secondsSpan") &&
+      document.getElementById("secondsSpan").innerText) {
+      if (secValue === 10 || secValue < 10) {
+        document.getElementById("secondsSpan").innerText = "0" + --secValue;
+      } else {
+        document.getElementById("secondsSpan").innerText = --secValue + "";
+      }
+    }
+  };
 
   loadValidationMessages() {
     let factory = new LanguageFactory(localStorage.getItem("langCode"));
@@ -123,7 +263,7 @@ export class LoginComponent implements OnInit {
     this.dataService.getConfig().subscribe(
       (response) => {
         this.configService.setConfig(response);
-        this.setTimer();
+        // this.setTimer();
         this.loadLanguagesWithConfig();
         this.isCaptchaEnabled();
       },
@@ -321,74 +461,68 @@ export class LoginComponent implements OnInit {
       this.errorMessage == "" &&
       this.enableSendOtp
     ) {
-      console.log("test");
+      this.loadingMessage = this.validationMessages["loading"];
+      this.dataService
+        .sendOtpWithCaptcha(
+          this.inputContactDetails,
+          localStorage.getItem("langCode"),
+          this.captchaToken
+        )
+        .subscribe(
+          (response) => {
+            this.loadingMessage = "";
+            if (!response["errors"]) {
+              let otpSentTime = response["responsetime"];
+              localStorage.setItem("otp_sent_time", String(otpSentTime));
+              localStorage.setItem(
+                "user_email_or_phone",
+                this.inputContactDetails
+              );
+              this.errorMessage = undefined;
       this.inputOTP = "";
-      this.showResend = true;
+              //this.showResend = false;
       this.showOTP = true;
       this.showSendOTP = false;
       this.showContactDetails = false;
+              localStorage.setItem("show_captcha", JSON.stringify(false));
       this.showCaptcha = false;
-      const timerFn = () => {
-        let secValue = Number(document.getElementById("secondsSpan").innerText);
-        const minValue = Number(
-          document.getElementById("minutesSpan").innerText
-        );
-
-        if (secValue === 0) {
-          secValue = 60;
-          if (minValue === 0) {
-            // redirecting to initial phase on completion of timer
-            this.showContactDetails = true;
-            this.showSendOTP = true;
-            this.showResend = false;
-            this.showOTP = false;
-            this.showVerify = false;
-            if (this.enableCaptcha) {
-              this.showCaptcha = true;
-              this.enableSendOtp = false;
-            }
-            document.getElementById("minutesSpan").innerText = this.minutes;
-            document.getElementById("timer").style.visibility = "hidden";
-            clearInterval(this.timer);
-            return;
+              // initial set up for timer
+              console.log("setting timer");
+              this.setTimer();
+              if (document.getElementById("timer")) {
+                document.getElementById("timer").style.visibility = "visible";
           }
-          document.getElementById("minutesSpan").innerText =
-            "0" + (minValue - 1);
-        }
-
-        if (secValue === 10 || secValue < 10) {
-          document.getElementById("secondsSpan").innerText = "0" + --secValue;
-        } else {
-          document.getElementById("secondsSpan").innerText = --secValue + "";
-        }
-      };
-
-      // update of timer value on click of resend
-      if (document.getElementById("timer").style.visibility === "visible") {
+              if (document.getElementById("secondsSpan")) {
         document.getElementById("secondsSpan").innerText = this.seconds;
+              }
+              if (document.getElementById("minutesSpan")) {
         document.getElementById("minutesSpan").innerText = this.minutes;
+              }
+              this.timer = setInterval(this.timerFn, 1000);
       } else {
-        // initial set up for timer
-        document.getElementById("timer").style.visibility = "visible";
-        this.timer = setInterval(timerFn, 1000);
+              if (this.enableCaptcha) {
+                //this.inputContactDetails = "";
+                this.resetCaptcha = true;
+                this.captchaToken = null;
+                this.enableSendOtp = false;
+                console.log("Resetting captcha:" + this.resetCaptcha);
       }
-      this.dataService
-      .sendOtpWithCaptcha(
-        this.inputContactDetails,
-        localStorage.getItem("langCode"),
-        this.captchaToken
-      )
-      .subscribe(
-        (response) => {
-         
+              this.loadingMessage = "";
+              const otpFailedToSendMsg = this.validationMessages["serverUnavailable"];
+              this.showOTPErrorMessage(response, otpFailedToSendMsg);
+            }
         },
         (error) => {
+            clearInterval(this.timer);
           if (this.enableCaptcha) {
             this.resetCaptcha = true;
             this.captchaToken = null;
             this.enableSendOtp = false;
             console.log("Resetting captcha:" + this.resetCaptcha);
           }
+            this.loadingMessage = "";
+            const otpFailedToSendMsg = this.validationMessages["serverUnavailable"];
+            this.showOTPErrorMessage(error, otpFailedToSendMsg);
         }
       );
      
@@ -419,6 +553,28 @@ export class LoginComponent implements OnInit {
           }
         );
     }
+  }
+
+  /**
+   * @description This is a dialoug box whenever an error comes from the server, it will appear.
+   *
+   * @private
+   * @memberof DemographicComponent
+   */
+  private showOTPErrorMessage(response: any, customMsg?: string) {
+    const titleOnError = "ERROR";
+    let message = "";
+    message = response["errors"][0].message;
+    const body = {
+      case: "ERROR",
+      title: titleOnError,
+      message: message,
+      yesButtonText: "OK",
+    };
+    this.dialog.open(DialougComponent, {
+      width: "400px",
+      data: body,
+    });
   }
 
   getCaptchaToken(event: Event) {

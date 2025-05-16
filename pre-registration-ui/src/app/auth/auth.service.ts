@@ -58,6 +58,9 @@ export class AuthService {
   }
 
   onLogout() {
+    localStorage.removeItem("otp_sent_time");
+    localStorage.removeItem("user_email_or_phone");
+    localStorage.removeItem("show_captcha");
     localStorage.setItem("loggedIn", "false");
     localStorage.setItem("loggedOut", "true");
     this.removeToken();
