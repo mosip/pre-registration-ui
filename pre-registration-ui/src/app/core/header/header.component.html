@@ -16,13 +16,15 @@
   <mat-sidenav-content>
     <mat-toolbar>
       <div class="sidenav-button">
-        <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon style="color: white;">menu</mat-icon>
+        </button>
       </div>
       <a *ngIf="!authService.isAuthenticated()" href="./" mat-list-item>
-        <img src="assets\logo-final.png" alt="MOSIP logo" class="header--logo" style="max-height: 40px"/>
+        <img src="assets\mosip-logo-white.png" alt="MOSIP logo" class="header--logo" style="max-height: 2.5rem"/>
       </a>
       <a *ngIf="authService.isAuthenticated()" (click)="onLogoClick()" mat-list-item>
-        <img src="assets\logo-final.png" alt="MOSIP logo" class="header--logo" style="max-height: 40px"/>
+        <img src="assets\mosip-logo-white.png" alt="MOSIP logo" class="header--logo" style="max-height: 2.5rem"/>
       </a>
       <mat-nav-list class="list-item">
         <a mat-list-item routerLink="/about-us">{{ 'header.link_about' | translate }}</a>
