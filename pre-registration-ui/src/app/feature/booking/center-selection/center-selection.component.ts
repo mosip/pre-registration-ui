@@ -383,7 +383,7 @@ export class CenterSelectionComponent
     if ("geolocation" in navigator) {
       this.showMap = false;
       this.positions = navigator.geolocation;
-      this.positions.geolocation.getCurrentPosition((position) => {
+      this.positions.getCurrentPosition((position) => {
         console.log(position.coords);
         const subs = this.dataService
           .getNearbyRegistrationCenters(position.coords)
