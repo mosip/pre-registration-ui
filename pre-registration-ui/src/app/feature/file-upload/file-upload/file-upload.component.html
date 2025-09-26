@@ -104,13 +104,20 @@
                   <span *ngIf="file.docCatCode == document.code">
                     <span>{{file.docName}}</span>
                     <span class="spacer"></span>
-                    <span *ngIf="!readOnlyMode" class="file-uplaoad__body__document-name__delete"
-                      (click)="deleteUploadedFile(file)">
+                    <a role="button"  *ngIf="!readOnlyMode" class="file-uplaoad__body__document-name__delete"
+                      (click)="deleteUploadedFile(file)"
+                      (keydown.enter)="deleteUploadedFile(file)"
+                      (keydown.space)="deleteUploadedFile(file)"
+                      tabindex="0">
                       <img src="assets\delete.png" alt="Delete" class="delete-img" />
-                    </span>
-                    <span class="file-uplaoad__body__document-name__view" (click)="viewFile(file)">
+                    </a>
+                    <a role="button" class="file-uplaoad__body__document-name__view"
+                       (click)="viewFile(file)"
+                       (keydown.enter)="viewFile(file)"
+                       (keydown.space)="viewFile(file)"
+                       tabindex="0">
                       <img src="assets\view.png" alt="View" class="view-img" />
-                    </span>
+                    </a>
                   </span>
                 </span>
               </div>

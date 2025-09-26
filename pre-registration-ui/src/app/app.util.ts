@@ -24,13 +24,11 @@ export default class Utils {
   }
 
   static async localeInitializer(localeId: string) {
-    return new Promise(async function (resolve) {
-      const module = await import(`@angular/common/locales/${localeId}.js`);
-      registerLocaleData(module.default);
-      localStorage.setItem(localeId, JSON.stringify(module.default));
-      console.log(`registered localeId: ${localeId}`);
-      resolve(true);
-    });
+    const module = await import(`@angular/common/locales/${localeId}.js`);
+    registerLocaleData(module.default);
+    localStorage.setItem(localeId, JSON.stringify(module.default));
+    console.log(`registered localeId: ${localeId}`);
+    return true;
   }
 
   static getBookingDateTime(
