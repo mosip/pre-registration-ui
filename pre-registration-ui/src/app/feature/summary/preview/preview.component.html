@@ -22,9 +22,13 @@
           <span [dir]="userPrefLanguageDir">&nbsp;{{dataCaptureLang}}&nbsp;</span>
         </span>)</span>
         <span [ngStyle]="userPrefLanguageDir == 'ltr'? {'float': 'right'} : {'float': 'left'}">
-          <span *ngIf="!readOnlyMode" (click)="modifyDemographic()" class="preview__modify-file"
+          <a role="button" *ngIf="!readOnlyMode"
+            (click)="modifyDemographic()"
+            (keydown.enter)="modifyDemographic()"
+            (keydown.space)="modifyDemographic()"
+            class="preview__modify-file"
             matTooltip="{{ helpText.modify_at_DemoPreview }}"><img src="assets/edit.png" alt="Edit" /> {{
-            previewLabels.action_modify }}</span>
+            previewLabels.action_modify }}</a>
         </span>
       </div>
     <!-- </mat-card-header> -->
@@ -67,9 +71,13 @@
     <div class="preview__footer-header">
       <span>{{ previewLabels.title_document }}</span>
       <span [ngStyle]="userPrefLanguageDir == 'ltr'? {'float': 'right'} : {'float': 'left'}">
-        <span *ngIf="!readOnlyMode" (click)="modifyDocument()" class="preview__modify-file"
+        <a *ngIf="!readOnlyMode" role="button"
+          (click)="modifyDocument()"
+          (keydown.enter)="modifyDocument()"
+          (keydown.space)="modifyDocument()"
+          class="preview__modify-file"
           matTooltip="{{ helpText.modify_at_DocumentPreview }}"><img src="assets/edit.png" alt="Edit" /> {{
-          previewLabels.action_modify }}</span>
+          previewLabels.action_modify }}</a>
       </span>
     </div>
     <mat-card-footer class="preview__footer-container">

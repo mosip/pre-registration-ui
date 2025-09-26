@@ -55,10 +55,18 @@
                               #input />
                             <em *ngIf="dataCaptureLangsDir[i] === 'ltr'"
                               style="float: right; color: grey; cursor: pointer;" matSuffix class="material-icons"
-                              (click)="openKeyboard(field.id, dataCaptureLanguage)">keyboard</em>
+                              (click)="openKeyboard(field.id, dataCaptureLanguage)"
+                              (keydown.enter)="openKeyboard(field.id, dataCaptureLanguage)"
+                              (keydown.space)="openKeyboard(field.id, dataCaptureLanguage)">
+                                keyboard
+                            </em>
                             <em *ngIf="dataCaptureLangsDir[i] === 'rtl'"
                               style="float: left; color: grey; cursor: pointer;" matSuffix class="material-icons"
-                              (click)="openKeyboard(field.id, dataCaptureLanguage)">keyboard</em>
+                              (click)="openKeyboard(field.id, dataCaptureLanguage)"
+                              (keydown.enter)="openKeyboard(field.id, dataCaptureLanguage)"
+                              (keydown.space)="openKeyboard(field.id, dataCaptureLanguage)">
+                                keyboard
+                            </em>
                           </mat-form-field>
                         </div>
                         <div *ngIf="readOnlyMode" [dir]="dataCaptureLangsDir[i]">
@@ -91,7 +99,9 @@
                       <ng-container *ngIf="field.controlType === 'button'">
                         <span *ngIf="i == 0" [dir]="dataCaptureLangsDir[i]">
                           <mat-button-toggle-group class="btn_grp" [formControlName]="field.id"
-                            (click)="onChangeHandler(field.id);">
+                            (click)="onChangeHandler(field.id)"
+                            (keydown.enter)="onChangeHandler(field.id)"
+                            (keydown.space)="onChangeHandler(field.id)">
                             <ng-container *ngFor="let button of selectOptionsDataArray[field.id]">
                               <span *ngIf="button.languageCode === dataCaptureLanguage">
                                 <mat-button-toggle class="btn_grp mat-button-toggle" value="{{button.valueCode}}"
