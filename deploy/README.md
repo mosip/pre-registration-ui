@@ -1,20 +1,22 @@
-# Pre-Registration Module
+# Pre-Registration-UI
 
 ## Install
 
 * Make sure your prereg UI domain name is set in [global configmap](../../cluster/global_configmap.yaml.sample)
 * Make sure this domain points to the public load balancer as PreReg UI is exposed to public.
-* Install
+## Install
   ```sh
   ./install.sh
   ```
 
 ## Uninstall
-
 ```sh
 ./delete.sh
 ```
-
+## Restart
+```sh
+./restart.sh
+```
 ## Test
 On a browser open  `https://<prereg ui domain>/pre-registration-ui/`. Example `https://prereg.sandbox.xyz.net/pre-registration-ui`.  Follow the instructions.  You may use [sample documents](samples/) to upload during pre-registration. 
 
