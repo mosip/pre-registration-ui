@@ -8,6 +8,7 @@ fi
 
 NS=prereg
 CHART_VERSION=1.3.0-beta.1-develop
+PREREG_GATEWAY_CHART_VERSION=1.0.0-develop
 
 echo Create $NS namespace
 kubectl create ns $NS
@@ -24,10 +25,15 @@ function installing_prereg_ui() {
   ./copy_cm.sh
 
   API_HOST=`kubectl get cm global -o jsonpath={.data.mosip-api-host}`
-  PREREG_HOST=`kubectl get cm global -o jsonpath={.data.mosip-prereg-host}`
+  PREREG_HOST=$(kubectl get cm global -o jsonpath="{.data.mosip-prereg-host}" | tr -d '\r\n')
+  echo "Using PREREG_HOST: '$PREREG_HOST'"
 
   echo Install prereg-gateway
-  helm -n $NS install prereg-gateway mosip/prereg-gateway --set istio.hosts[0]=$PREREG_HOST --version $CHART_VERSION
+  helm -n $NS install prereg-gateway mosip/istio-addons \
+  --set istio.name=prereg-gateway \
+  --set istio.ingressController=ingressgateway \
+  --set istio.host=$PREREG_HOST \
+  --version $PREREG_GATEWAY_CHART_VERSION
 
   echo Installing prereg-ui
   helm -n $NS install prereg-ui mosip/prereg-ui --set prereg.apiHost=$PREREG_HOST --version $CHART_VERSION
