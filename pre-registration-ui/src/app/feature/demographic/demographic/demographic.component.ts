@@ -187,7 +187,14 @@ export class DemographicComponent
    *
    * @memberof DemographicComponent
    */
-  async ngOnInit() {
+  ngOnInit(): void {
+    this.initAsync().catch(err => {
+      console.error('Initialization failed:', err);
+      this.primaryuserForm = false;
+    });
+  }
+
+  private async initAsync(): Promise<void> {
     await this.initialization();
     await this.initializeDataCaptureLanguages();
     //set translation service
@@ -204,7 +211,7 @@ export class DemographicComponent
     await this.setFormControlValues();
     if (!this.dataModification) {
       if (this.isConsentMessage)
-        this.consentDeclaration(); 
+        this.consentDeclaration();
     }
     this.onChangeHandler("");
     if (this.readOnlyMode) {
@@ -222,7 +229,7 @@ export class DemographicComponent
           .subscribe(async () => {
             this.searchInDropdown(controlId);
           });
-      }  
+      }
     });
     this.checkToShowLangChangeBtn();
     //console.log("exiting");
@@ -291,21 +298,27 @@ export class DemographicComponent
         this.translate.get('demographic.date_dd').subscribe((day: string) => {
           const dayLabel = day;
           if (localeDtFormat.indexOf("YYYY") != -1) {
+            // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
             localeDtFormat = localeDtFormat.replace(/YYYY/g, yearLabel);
           }
           else if (localeDtFormat.indexOf("YY") != -1) {
+            // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
             localeDtFormat = localeDtFormat.replace(/YY/g, yearLabel);
           }
           if (localeDtFormat.indexOf("MM") != -1) {
+            // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
             localeDtFormat = localeDtFormat.replace(/MM/g, monthLabel);
           }
           else if (localeDtFormat.indexOf("M") != -1) {
+            // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
             localeDtFormat = localeDtFormat.replace(/M/g, monthLabel);
           }
           if (localeDtFormat.indexOf("DD") != -1) {
+            // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
             localeDtFormat = localeDtFormat.replace(/DD/g, dayLabel);
           }
           else if (localeDtFormat.indexOf("D") != -1) {
+            // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
             localeDtFormat = localeDtFormat.replace(/D/g, dayLabel);
           }
           this.localeDtFormat = localeDtFormat;

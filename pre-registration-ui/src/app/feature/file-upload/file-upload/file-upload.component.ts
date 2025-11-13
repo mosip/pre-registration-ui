@@ -127,13 +127,19 @@ export class FileUploadComponent implements OnInit, OnDestroy {
     this.translate.use(this.userPrefLanguage);
   }
 
-  async ngOnInit() { 
+  ngOnInit(): void {
+    // keep the purely sync part here
     this.getPrimaryLabels(this.userPrefLanguage);
     if (this.ltrLangs.includes(this.userPrefLanguage)) {
-      this.userPrefLanguageDir = "ltr";
+      this.userPrefLanguageDir = 'ltr';
     } else {
-      this.userPrefLanguageDir = "rtl";
+      this.userPrefLanguageDir = 'rtl';
     }
+    // async part moved to helper; fire and forget
+    void this.initAsync();
+  }
+
+  private async initAsync(): Promise<void> {
     await this.initiateComponent();
     this.fullNameField = this.config.getConfigByKey(
       appConstants.CONFIG_KEYS.preregistration_identity_name
@@ -941,9 +947,9 @@ export class FileUploadComponent implements OnInit, OnDestroy {
     docCode: string,
     refNumber: string
   ) {
-    const extensionRegex = new RegExp(
-      "(?:" + this.allowedFilesHtml.replace(/,/g, "|") + ")"
-    );
+    // NOSONAR: Avoid replaceAll; split and join safely, match exact extension
+    const extensions = this.allowedFilesHtml.split(',').map(e => e.trim()).filter(Boolean);
+    const extensionRegex = extensions.length ? new RegExp('^(?:' + extensions.join('|') + ')$') : null;
     const oldFileExtension = this.fileExtension;
     this.fileExtension = event.target.files[0].name.substring(
       event.target.files[0].name.indexOf(".") + 1
@@ -953,7 +959,7 @@ export class FileUploadComponent implements OnInit, OnDestroy {
     this.disableNavigation = true;
 
     // if (event.target.files[0].type === file) {
-    if (extensionRegex.test(this.fileExtension)) {
+    if (extensionRegex && extensionRegex.test(this.fileExtension)) {
       allowedFileUploaded = true;
       if (
         event.target.files[0].name.length <=

@@ -86,7 +86,11 @@ export class TimeSelectionComponent
     this.translate.use(this.userPreferredLangCode);
   }
 
-  async ngOnInit() {
+  ngOnInit(): void {
+    void this.initAsync();
+  }
+
+  private async initAsync(): Promise<void> {
     if (this.router.url.includes("multiappointment")) {
       this.preRegId = [...JSON.parse(localStorage.getItem("multiappointment"))];
     } else {
@@ -118,7 +122,7 @@ export class TimeSelectionComponent
       this.registrationCenterLunchTime =
         this.temp[0].registrationCenter.lunchEndTime.split(":");
     }
-    this.getSlotsforCenter(this.registrationCenter);  
+    this.getSlotsforCenter(this.registrationCenter);
   }
 
   async getUserInfo(preRegId) {
