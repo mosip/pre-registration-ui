@@ -75,47 +75,60 @@ export class CenterSelectionComponent
     this.translate.use(this.userPreferredLangCode);
   }
 
-  async ngOnInit() {
-    if (this.router.url.includes("multiappointment")) {
-      this.preRegId = [...JSON.parse(localStorage.getItem("multiappointment"))];
+  ngOnInit(): void {
+    if (this.router.url.includes('multiappointment')) {
+      const stored = localStorage.getItem('multiappointment');
+      if (stored) {
+        try {
+          this.preRegId = [...JSON.parse(stored)];
+        } catch (error) {
+          console.error('Failed to parse multiappointment data from localStorage:', error);
+          this.preRegId = [];
+        }
+      } else {
+        this.preRegId = [];
+      }
+      void this.initAsync(); // start only after preRegId is known
     } else {
       this.activatedRoute.params.subscribe((param) => {
-        this.preRegId = [param["appId"]];
+        this.preRegId = [param['appId']];
+        void this.initAsync(); // start only after param is known
       });
     }
+  }
+
+  private async initAsync(): Promise<void> {
     this.getErrorLabels();
     await this.getUserInfo(this.preRegId);
     this.REGISTRATION_CENTRES = [];
     this.selectedCentre = null;
-    this.recommendedCenterLocCode = Number(this.configService.getConfigByKey(
+    const configValue = this.configService.getConfigByKey(
       appConstants.CONFIG_KEYS.preregistration_recommended_centers_locCode
-    ));
+    );
+    this.recommendedCenterLocCode = Number(configValue);
+    if (Number.isNaN(this.recommendedCenterLocCode)) {
+      console.error('Invalid recommendedCenterLocCode config value:', configValue);
+      this.recommendedCenterLocCode = 1; // fallback to default
+    }
     console.log(`recommendedCenterLocCode: ${this.recommendedCenterLocCode}`);
     await this.getIdentityJsonFormat();
-    const subs = this.dataService
-      .getLocationTypeData()
-      .subscribe((response) => {
-        //get all location types from db
-        this.allLocationTypes = response[appConstants.RESPONSE]["locationHierarchyLevels"];
-        console.log(this.allLocationTypes);        
-        //get the recommended loc hierachy code to which booking centers are mapped        
-        //now filter out only those hierachies which are higher than the recommended loc hierachy code
-        //ex: if locHierachy is ["Country","Region","Province","City","PostalCode"] and the
-        //recommended loc hierachy code is 3 for "City", then show only "Country","Region","Province"
-        //in the Search dropdown. There are no booking centers mapped to "PostalCode", so don't include it.
-        this.locationTypes = this.allLocationTypes.filter(
-          (locType) =>
-            locType.hierarchyLevel <= this.recommendedCenterLocCode
-        );
-        //console.log(this.locationTypes);
-        //sort the filtered array in ascending order of hierarchyLevel
-        this.locationTypes.sort(function (a, b) {
-          return a.hierarchyLevel - b.hierarchylevel;
-        });
-        this.getRecommendedCenters();
-      });
+    const subs = this.dataService.getLocationTypeData().subscribe((response) => {
+      //get all location types from db
+      this.allLocationTypes = response[appConstants.RESPONSE]['locationHierarchyLevels'];
+      console.log(this.allLocationTypes);
+      //get the recommended loc hierachy code to which booking centers are mapped
+      //now filter out only those hierachies which are higher than the recommended loc hierachy code
+      //ex: if locHierachy is ["Country","Region","Province","City","PostalCode"] and the
+      //recommended loc hierachy code is 3 for "City", then show only "Country","Region","Province"
+      //in the Search dropdown. There are no booking centers mapped to "PostalCode", so don't include it.
+      this.locationTypes = this.allLocationTypes.filter(
+        (locType) => locType.hierarchyLevel <= this.recommendedCenterLocCode
+      );
+      // sort the filtered array in ascending order of hierarchyLevel
+      this.locationTypes.sort((a, b) => a.hierarchyLevel - b.hierarchyLevel);
+      this.getRecommendedCenters();
+    });
     this.subscriptions.push(subs);
-    
   }
 
   async getUserInfo(preRegId) {
