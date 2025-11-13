@@ -58,39 +58,56 @@ export class AcknowledgementComponent implements OnInit, OnDestroy {
     this.langCode = localStorage.getItem("langCode");
   }
 
-  async ngOnInit() {
-    if (this.router.url.includes("multiappointment")) {
-      this.preRegIds = [...JSON.parse(localStorage.getItem("multiappointment"))];
+
+  ngOnInit(): void {
+    if (this.router.url.includes('multiappointment')) {
+      const stored = localStorage.getItem('multiappointment');
+      try {
+        this.preRegIds = stored ? [...JSON.parse(stored)] : [];
+      } catch {
+        this.preRegIds = [];
+      }
+      // we already know preRegIds → start async init
+      void this.initAsync().catch(error => {
+        console.error('Initialization failed:', error);
+        this.showSpinner = false;
+      });
     } else {
+      // wait for appId from route before starting async init
       this.activatedRoute.params.subscribe((param) => {
-        this.preRegIds = [param["appId"]];
+        this.preRegIds = [param['appId']];
+        void this.initAsync().catch(error => {
+          console.error('Initialization failed:', error);
+          this.showSpinner = false;
+        });
       });
     }
-    this.dataStorageService
-    .getI18NLanguageFiles(this.langCode)
-    .subscribe((response) => {
-      this.errorlabels = response[appConstants.ERROR];
-      this.apiErrorCodes = response[appConstants.API_ERROR_CODES];
-    });
+    const subs = this.dataStorageService
+      .getI18NLanguageFiles(this.langCode)
+      .subscribe((response) => {
+        this.errorlabels = response[appConstants.ERROR];
+        this.apiErrorCodes = response[appConstants.API_ERROR_CODES];
+      });
+    this.subscriptions.push(subs);
     this.name = this.configService.getConfigByKey(
       appConstants.CONFIG_KEYS.preregistration_identity_name
     );
+  }
+
+  private async initAsync(): Promise<void> {
     await this.getUserInfo(this.preRegIds);
-    //console.log(this.usersInfoArr);
+    // console.log(this.usersInfoArr);
     for (let i = 0; i < this.usersInfoArr.length; i++) {
       await this.getRegCenterDetails(this.usersInfoArr[i].langCode, i);
       await this.getLabelDetails(this.usersInfoArr[i].langCode, i);
       await this.getUserLangLabelDetails(this.langCode, i);
     }
-
-    let notificationTypes = this.configService
+    const notificationTypes = this.configService
       .getConfigByKey(appConstants.CONFIG_KEYS.mosip_notification_type)
-      .split("|");
+      .split('|');
     this.notificationTypes = notificationTypes.map((item) =>
       item.toUpperCase()
     );
-    
-
     await this.apiCalls();
     if (this.bookingService.getSendNotification()) {
       this.bookingService.resetSendNotification();
@@ -373,42 +390,70 @@ export class AcknowledgementComponent implements OnInit, OnDestroy {
       this.ackDataItem["preRegIdLabels"] = JSON.stringify(
         preRegIdLabels
       )
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/\[/g, "")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/,/g, " / ")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/"/g, " ")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/]/g, "");
       this.ackDataItem["appDateLabels"] = JSON.stringify(appDateLabels)
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/\[/g, "")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/,/g, " / ")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/"/g, " ")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/]/g, "");
       this.ackDataItem["contactPhoneLabels"] = JSON.stringify(
         contactPhoneLabels
       )
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/\[/g, "")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/,/g, " / ")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/"/g, " ")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/]/g, "");
       this.ackDataItem["messages"] = messages;
       this.ackDataItem["labelNames"] = JSON.stringify(labelNames)
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/\[/g, "")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/,/g, " / ")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/"/g, " ")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/]/g, "");
       this.ackDataItem["nameValues"] = JSON.stringify(nameValues)
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/\[/g, "")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/,/g, " / ")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/"/g, " ")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/]/g, "");
       this.ackDataItem["labelRegCntrs"] = JSON.stringify(labelRegCntrs)
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/\[/g, "")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/,/g, " / ")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/"/g, " ")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/]/g, "");
       this.ackDataItem["regCntrNames"] = JSON.stringify(regCntrNames)
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/\[/g, "")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/,/g, " / ")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/"/g, " ")
+        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/]/g, "");
       for (let j = 0; j < this.guidelines.length; j++) {
         if (appLangCode.includes(this.guidelines[j].langCode)) {

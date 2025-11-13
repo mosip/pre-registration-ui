@@ -105,7 +105,7 @@ export class DashBoardComponent implements OnInit, OnDestroy {
    *
    * @memberof DashBoardComponent
    */
-  async ngOnInit() {
+  ngOnInit() {
     this.loginId = localStorage.getItem("loginId");
     this.mandatoryLanguages = Utils.getMandatoryLangs(this.configService);
     this.optionalLanguages = Utils.getOptionalLangs(this.configService);
@@ -139,7 +139,7 @@ export class DashBoardComponent implements OnInit, OnDestroy {
     this.name = this.configService.getConfigByKey(
       appConstants.CONFIG_KEYS.preregistration_identity_name
     );
-    await this.getIdentityJsonFormat();
+    this.getIdentityJsonFormat();
   }
 
   async getIdentityJsonFormat() {
