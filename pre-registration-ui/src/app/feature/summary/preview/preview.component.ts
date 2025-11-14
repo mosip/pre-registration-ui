@@ -383,7 +383,6 @@ export class PreviewComponent implements OnInit {
   }
 
   formatDob(dob: string) {
-    // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
     dob = dob.replace(/\//g, "-");
     const ltrLangs = this.configService
     .getConfigByKey(appConstants.CONFIG_KEYS.mosip_left_to_right_orientation)

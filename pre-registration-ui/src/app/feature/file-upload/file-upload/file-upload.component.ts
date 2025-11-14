@@ -947,7 +947,6 @@ export class FileUploadComponent implements OnInit, OnDestroy {
     docCode: string,
     refNumber: string
   ) {
-    // NOSONAR: Avoid replaceAll; split and join safely, match exact extension
     const extensions = this.allowedFilesHtml.split(',').map(e => e.trim()).filter(Boolean);
     const extensionRegex = extensions.length ? new RegExp('^(?:' + extensions.join('|') + ')$') : null;
     const oldFileExtension = this.fileExtension;

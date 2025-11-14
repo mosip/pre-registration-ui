@@ -390,70 +390,42 @@ export class AcknowledgementComponent implements OnInit, OnDestroy {
       this.ackDataItem["preRegIdLabels"] = JSON.stringify(
         preRegIdLabels
       )
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/\[/g, "")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/,/g, " / ")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/"/g, " ")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/]/g, "");
       this.ackDataItem["appDateLabels"] = JSON.stringify(appDateLabels)
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/\[/g, "")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/,/g, " / ")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/"/g, " ")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/]/g, "");
       this.ackDataItem["contactPhoneLabels"] = JSON.stringify(
         contactPhoneLabels
       )
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/\[/g, "")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/,/g, " / ")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/"/g, " ")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/]/g, "");
       this.ackDataItem["messages"] = messages;
       this.ackDataItem["labelNames"] = JSON.stringify(labelNames)
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/\[/g, "")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/,/g, " / ")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/"/g, " ")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/]/g, "");
       this.ackDataItem["nameValues"] = JSON.stringify(nameValues)
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/\[/g, "")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/,/g, " / ")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/"/g, " ")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/]/g, "");
       this.ackDataItem["labelRegCntrs"] = JSON.stringify(labelRegCntrs)
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/\[/g, "")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/,/g, " / ")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/"/g, " ")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/]/g, "");
       this.ackDataItem["regCntrNames"] = JSON.stringify(regCntrNames)
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/\[/g, "")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/,/g, " / ")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/"/g, " ")
-        // NOSONAR: Cannot use String.replaceAll() due to Angular 7 browser support; using replace + global regex instead
         .replace(/]/g, "");
       for (let j = 0; j < this.guidelines.length; j++) {
         if (appLangCode.includes(this.guidelines[j].langCode)) {
