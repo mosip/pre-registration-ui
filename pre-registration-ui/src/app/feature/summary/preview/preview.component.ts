@@ -68,7 +68,7 @@ export class PreviewComponent implements OnInit {
     localStorage.setItem("modifyDocument", "false");
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.activatedRoute.params.subscribe((param) => {
       this.preRegId = param["appId"];
     });
@@ -78,6 +78,11 @@ export class PreviewComponent implements OnInit {
       this.userPrefLanguageDir = "rtl";
     }
     this.getLanguageLabels();
+    // kick off async initialisation (we ignore the returned Promise on purpose)
+    void this.initAsync();
+  }
+
+  private async initAsync(): Promise<void> {
     await this.getIdentityJsonFormat();
     // await this.getResidentDetails();
     // await this.getGenderDetails();
@@ -130,7 +135,7 @@ export class PreviewComponent implements OnInit {
             });
           }
           if (control.type === appConstants.FIELD_TYPE_STRING) {
-            const ele = this.previewData[controlId];  
+            const ele = this.previewData[controlId];
             this.dropDownFields[controlId].forEach((codeValue) => {
               if (ele === codeValue.valueCode && this.dataCaptureLanguages[0] === codeValue.languageCode) {
                 this.previewData[controlId] = codeValue.valueName;

@@ -10,6 +10,7 @@ import { ConfigService } from "src/app/core/services/config.service";
 import * as appConstants from "../../app.constants";
 import Utils from "src/app/app.util";
 import moment from "moment";
+import {first} from "rxjs/operators";
 
 @Component({
   selector: "app-login",
@@ -72,21 +73,30 @@ export class LoginComponent implements OnInit {
     clearInterval(this.timer);
   }
 
-  async ngOnInit() {
-    if (localStorage.getItem(appConstants.FORCE_LOGOUT) != appConstants.FORCE_LOGOUT_YES 
-      && this.authService.isAuthenticated()) {
-      this.router.navigate([localStorage.getItem("langCode"), "dashboard"]);
+  ngOnInit(): void {
+    const forceLogout = localStorage.getItem(appConstants.FORCE_LOGOUT);
+    const langCode = localStorage.getItem('langCode');
+    if (forceLogout !== appConstants.FORCE_LOGOUT_YES && this.authService.isAuthenticated() && langCode) {
+      this.router.navigate([langCode, 'dashboard']);
     } else {
-      if (localStorage.getItem(appConstants.FORCE_LOGOUT) == appConstants.FORCE_LOGOUT_YES) {
-        this.authService.onLogout();
-      }
-      await this.loadDefaultConfig();
-      await this.loadConfigs();
-      if (this.router.url.includes(`${localStorage.getItem("langCode")}`)) {
-        this.handleBrowserReload();
-      }
-      localStorage.setItem("dir", this.dir);
+      // fire & forget async flow
+      this.initializeAfterLogout(forceLogout, langCode).catch(err => {
+        // Optional: centralize error handling/logging
+        console.error('Error during initialization after logout', err);
+      });
     }
+  }
+
+  private async initializeAfterLogout(forceLogout: string | null, langCode: string | null): Promise<void> {
+    if (forceLogout === appConstants.FORCE_LOGOUT_YES) {
+      this.authService.onLogout();
+    }
+    await this.loadDefaultConfig();
+    await this.loadConfigs();
+    if (langCode && this.router.url.includes(langCode)) {
+      this.handleBrowserReload();
+    }
+    localStorage.setItem('dir', this.dir);
   }
 
   async loadDefaultConfig() {
@@ -98,34 +108,33 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  async loadConfigs() {
-    this.dataService.getConfig().subscribe((response) => {
-      this.configService.setConfig(response);
-      this.appVersion = this.configService.getConfigByKey(
-        "preregistration.ui.version"
-      );
-      this.isCaptchaEnabled();
-      this.loadLanguagesWithConfig();
-      let urlLangCode = this.router.url.split("/").pop();
-      if (this.languageSelectionArray.indexOf(urlLangCode) !== -1){
+  async loadConfigs(): Promise<void> {
+    const response = await this.dataService.getConfig().pipe(first()).toPromise();
+    this.configService.setConfig(response);
+    this.appVersion = this.configService.getConfigByKey(
+      "preregistration.ui.version"
+    );
+    this.isCaptchaEnabled();
+    this.loadLanguagesWithConfig();
+    let urlLangCode = this.router.url.split("/").pop();
+    if (this.languageSelectionArray.indexOf(urlLangCode) !== -1){
       localStorage.setItem("langCode", urlLangCode);
-      }
-      if (!localStorage.getItem("langCode")) {
-        localStorage.setItem("langCode", this.languageSelectionArray[0]);
-      }
-      let langCodeInUrl = this.router.url.includes(`${localStorage.getItem("langCode")}`);
-      if (!langCodeInUrl) {
-        this.router.navigate([`${localStorage.getItem("langCode")}`]);
-      }
-      this.selectedLanguage = localStorage.getItem("langCode");
-      this.setLanguageDirection(this.selectedLanguage);
-      this.authService.userPreferredLang = this.selectedLanguage;
-      this.userPreferredLanguage = this.selectedLanguage;
-      localStorage.setItem("userPrefLanguage", this.userPreferredLanguage);
-      this.translate.use(this.userPreferredLanguage);
-      this.loadValidationMessages();
-      this.showSpinner = false;
-    });
+    }
+    if (!localStorage.getItem("langCode")) {
+      localStorage.setItem("langCode", this.languageSelectionArray[0]);
+    }
+    let langCodeInUrl = this.router.url.includes(`${localStorage.getItem("langCode")}`);
+    if (!langCodeInUrl) {
+      this.router.navigate([`${localStorage.getItem("langCode")}`]);
+    }
+    this.selectedLanguage = localStorage.getItem("langCode");
+    this.setLanguageDirection(this.selectedLanguage);
+    this.authService.userPreferredLang = this.selectedLanguage;
+    this.userPreferredLanguage = this.selectedLanguage;
+    localStorage.setItem("userPrefLanguage", this.userPreferredLanguage);
+    this.translate.use(this.userPreferredLanguage);
+    this.loadValidationMessages();
+    this.showSpinner = false;
   }
 
   handleBrowserReload() {
@@ -145,7 +154,7 @@ export class LoginComponent implements OnInit {
           appConstants.CONFIG_KEYS.mosip_kernel_otp_expiry_time
         )
       );
-      if (isNaN(otpExpiryIntervalInSeconds)) {
+      if (Number.isNaN(otpExpiryIntervalInSeconds)) {
         otpExpiryIntervalInSeconds = 120; //2 mins by default
       }
       var timeLapsedInSeconds = moment(currentTime).diff(
@@ -299,7 +308,7 @@ export class LoginComponent implements OnInit {
       )
     );
 
-    if (!isNaN(time)) {
+    if (!Number.isNaN(time)) {
       const minutes = time / 60;
       const seconds = time % 60;
       if (minutes < 10) {

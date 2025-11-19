@@ -28,9 +28,9 @@
     <div>
       <div class="container">
         <div class="time-selection__arrow-text">
-          <p (click)="scrollLeft()">
+          <a role="button" (click)="scrollLeft()" (keydown.enter)="scrollLeft()" (keydown.space)="scrollLeft()" tabindex="0" >
             {{ "timeSelection.text_prev" | translate }}
-          </p>
+          </a>
         </div>
         <div class="left-button">
           <a (click)="scrollLeft()"><img src="assets/left.png" alt="Left"/></a>
@@ -45,7 +45,10 @@
                 ? 'sizing selected'
                 : 'sizing'
             "
+            [tabindex]="i + 1"
             (click)="dateSelected(i)"
+            (keydown.enter)="dateSelected(i)"
+            (keydown.space)="dateSelected(i)"
           >
             <mat-card-content class="time-selection__date">
               <p class="time-selection__tile-date">{{ data.displayDate }}</p>
@@ -65,9 +68,9 @@
           <a (click)="scrollRight()"><img src="assets/right.png" alt="Right" /></a>
         </div>
         <div class="time-selection__arrow-text">
-          <p (click)="scrollRight()">
+          <a role="button"  (click)="scrollRight()" (keydown.enter)="scrollRight()" (keydown.space)="scrollRight()" tabindex="0">
             {{ "timeSelection.text_next" | translate }}
-          </p>
+          </a>
         </div>
       </div>
     </div>
@@ -118,7 +121,10 @@
                   ? 'card card-content selected-card'
                   : 'card card-content'
               "
+              [tabindex]="i + 1"
               (click)="cardSelected(i)"
+              (keydown.enter)="cardSelected(i)"
+              (keydown.space)="cardSelected(i)"
             >
               <mat-card-content style="width: 100%">
                 <p class="card-time-text">
@@ -190,7 +196,7 @@
             selectedCard !== undefined
           "
         >
-          <table class="time-selection__name-list" aria-describedby="time-selection-name-list">
+          <table class="time-selection__name-list" aria-describedby="time-selection-name-list" role="presentation">
             <tr
               class="time-selection__name-list-item"
               *ngFor="
@@ -202,9 +208,14 @@
             >
               <td>{{ item.fullName }}</td>
               <td>
-                <mat-icon (click)="itemDelete(j)" class="name-delete-button"
-                  >close</mat-icon
-                >
+                <mat-icon role="button"
+                          (click)="itemDelete(j)"
+                          (keydown.enter)="itemDelete(j)"
+                          (keydown.space)="itemDelete(j)"
+                          [tabIndex]="j"
+                          class="name-delete-button">
+                    close
+                </mat-icon>
               </td>
             </tr>
           </table>
@@ -216,7 +227,7 @@
           {{ "timeSelection.text_available" | translate }}
         </div>
         <div>
-          <table class="time-selection__name-list" aria-describedby="time-selection-name-list">
+          <table class="time-selection__name-list" aria-describedby="time-selection-name-list" role="presentation">
             <tr
               class="time-selection__name-list-item"
               *ngFor="let item of deletedNames; let k = index"
@@ -225,6 +236,10 @@
               <td>
                 <mat-icon
                   (click)="addItem(k)"
+                  (keydown.enter)="addItem(k)"
+                  (keydown.space)="addItem(k)"
+                  role="button"
+                  [tabindex]="k"
                   [ngClass]="
                     disableAddButton
                       ? 'name-delete-button disable_add'

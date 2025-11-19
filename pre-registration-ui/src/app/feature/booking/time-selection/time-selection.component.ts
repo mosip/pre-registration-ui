@@ -86,7 +86,11 @@ export class TimeSelectionComponent
     this.translate.use(this.userPreferredLangCode);
   }
 
-  async ngOnInit() {
+  ngOnInit(): void {
+    void this.initAsync();
+  }
+
+  private async initAsync(): Promise<void> {
     if (this.router.url.includes("multiappointment")) {
       this.preRegId = [...JSON.parse(localStorage.getItem("multiappointment"))];
     } else {
@@ -118,21 +122,18 @@ export class TimeSelectionComponent
       this.registrationCenterLunchTime =
         this.temp[0].registrationCenter.lunchEndTime.split(":");
     }
-    this.getSlotsforCenter(this.registrationCenter);  
+    this.getSlotsforCenter(this.registrationCenter);
   }
 
-  getUserInfo(preRegId) {
-    return new Promise(async (resolve) => {
-      for (let i = 0; i < preRegId.length; i++) {
-        await this.getUserDetails(preRegId[i]).then((user) => {
-          console.log(user);  
-          this.userInfo.push(user)
-        }
-        
-        );
+  async getUserInfo(preRegId) {
+    for (const id of preRegId) {
+      try {
+        const user = await this.getUserDetails(id);
+        this.userInfo.push(user);
+      } catch (error) {
+        console.error('Failed to fetch details for preRegId: %s', id, error);
       }
-      resolve(true);
-    });
+    }
   }
 
   getUserDetails(prid) {
