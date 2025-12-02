@@ -1,0 +1,129 @@
+THIRD-PARTY-NOTICES
+
+Copyright © MOSIP.
+All rights reserved.
+
+This project includes third-party components distributed under licenses
+that require attribution. The following sections list those components
+and their respective licenses.
+
+================================================================================
+Package: MOSIP Kernel BOM
+Version: 1.3.0-SNAPSHOT
+License: Mozilla Public License 2.0
+Homepage: [https://mosip.io](https://mosip.io)
+==============================================
+
+================================================================================
+Package: MOSIP Kernel Core
+Version: 1.3.0-SNAPSHOT
+License: Mozilla Public License 2.0
+Homepage: [https://mosip.io](https://mosip.io)
+==============================================
+
+================================================================================
+Package: MOSIP Kernel Logger Logback
+Version: 1.3.0-SNAPSHOT
+License: Mozilla Public License 2.0
+Homepage: [https://mosip.io](https://mosip.io)
+==============================================
+
+================================================================================
+Package: MOSIP Biometrics API
+Version: 1.3.0-SNAPSHOT
+License: Mozilla Public License 2.0
+Homepage: [https://mosip.io](https://mosip.io)
+==============================================
+
+================================================================================
+Package: MOSIP Biometrics Util
+Version: 1.3.0-SNAPSHOT
+License: Mozilla Public License 2.0
+Homepage: [https://mosip.io](https://mosip.io)
+==============================================
+
+================================================================================
+Package: SLF4J API
+License: MIT License
+Homepage: [http://www.slf4j.org](http://www.slf4j.org)
+======================================================
+
+================================================================================
+Package: Mockito Core
+Version: 3.3.3 / 5.8.0
+License: MIT License
+Homepage: [https://github.com/mockito/mockito](https://github.com/mockito/mockito)
+==================================================================================
+
+================================================================================
+Package: Protobuf Java
+Version: 3.13.0 / 3.16.3
+License: BSD-3-Clause
+Homepage: [https://github.com/protocolbuffers/protobuf](https://github.com/protocolbuffers/protobuf)
+====================================================================================================
+
+================================================================================
+Package: JAI ImageIO JPEG2000
+Version: 1.3.0
+License: BSD-3-Clause-No-Nuclear-License
+Homepage: [https://github.com/jai-imageio/jai-imageio-core](https://github.com/jai-imageio/jai-imageio-core)
+============================================================================================================
+
+================================================================================
+Package: JUnit 4
+License: Eclipse Public License 1.0
+Homepage: [https://junit.org](https://junit.org)
+================================================
+
+================================================================================
+Package: JUnit Vintage Engine
+License: Eclipse Public License 2.0
+Homepage: [https://junit.org](https://junit.org)
+================================================
+
+================================================================================
+Package: JUnit Jupiter
+Version: 5.10.2
+License: Eclipse Public License 2.0
+Homepage: [https://junit.org/junit5/](https://junit.org/junit5/)
+================================================================
+
+================================================================================
+Package: H2 Database
+Version: 2.2.220
+License: MPL-2.0 or EPL-1.0 (Dual License)
+Homepage: [https://www.h2database.com](https://www.h2database.com)
+==================================================================
+
+================================================================================
+Package: JavaMail API
+Version: 1.6.2
+License: CDDL 1.1 / GPL-2.0 with Classpath Exception
+Homepage: [https://eclipse-ee4j.github.io/mail/](https://eclipse-ee4j.github.io/mail/)
+======================================================================================
+
+================================================================================
+Package: iText 5 (itextpdf)
+Version: 5.5.13.4
+License: AGPL-3.0-only
+Homepage: [https://itextpdf.com/](https://itextpdf.com/)
+========================================================
+
+================================================================================
+Package: HTML2PDF (iText)
+Version: 2.0.0
+License: AGPL-3.0-only
+Homepage: [https://itextpdf.com/](https://itextpdf.com/)
+========================================================
+
+================================================================================
+Package: org.json
+License: JSON License
+Homepage: [https://github.com/stleary/JSON-java](https://github.com/stleary/JSON-java)
+======================================================================================
+
+---
+
+Full license texts for all components are available in the
+`license/` directory of this repository.
+----------------------------------------
