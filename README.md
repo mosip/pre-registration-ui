@@ -7,17 +7,15 @@
 MOSIP provides a reference implementation of the pre-registration portal that customized as per country needs. This repository contains UI code for Pre-Registration portal. 
 
 ## Features
-The Pre-Registration Portal streamlines the identity registration process by allowing residents to submit demographic details and documents online, reducing wait times and improving data accuracy. 
-1. Login and Pre-Registration
-2. Appointment Booking
-3. Notification and Acknowledgment System
-4. Registration Centers Data Integration and Synchronization
-
-## Local Setup
-The project can be set up in two ways:
-
-1. [Local Setup with Docker (Easy Setup for Demos)](#local-setup-with-docker-easy-setup-for-demos)
-2. [Local Setup (for Development or Contribution)](#local-setup-for-development-or-contribution)
+The Pre-Registration portal Features are :
+1. Resident can login into PreRegistration with email id / phone number 
+2. Resident can create multiple PreRegistration application. 
+3. For each PreRegistration application, resident can give demographic data in multiple languages. 
+4. For each PreRegistration application, resident can upload various proof documents. 
+5. For each PreRegistration application, resident can search for a Registration Center and search for suitable appointment slots. 
+6. For each PreRegistration application, resident can book an appointment at suitable Registration Center 
+7. For every appointment booking, resident can get the acknowledgement as well as a notification via email id / phone number. 
+8. Resident can cancel the appointment or reschedule it as well.
 
 ### Prerequisites
 
@@ -36,7 +34,7 @@ The code is written in Angular JS.
 - Check out the source code from GIT – To download the source code from git. Follow the following steps to download source code on your system.
   - <code>git clone https://github.com/mosip/pre-registration-ui.git</code> (to clone the source code repository from git)
 
-### Local Setup with Docker (Easy Setup for Demos)
+### For Production build:
 
 - Build the code – Follow the following steps to build the source code on your system.
   - Navigate to the pre-registration-ui directory inside the cloned repository. Then run the following command in that directory
@@ -50,8 +48,8 @@ The code is written in Angular JS.
   - Example: <code>docker run -d -p 8080:8080 --name nginx preregui</code>
 - Now you can access the user interface over the internet via browser.
   - Example: <code>http://localhost:8080/pre-registration-ui/#/eng</code>
-  
-### Local Setup (for Development or Contribution)
+
+### For Local build:
 - Build & deploy the code locally – Follow the following steps to build the source code on your system.
   - Navigate to the pre-registration-ui directory inside the cloned repository. Then run the following command in that directory
   - <code>ng serve</code>
