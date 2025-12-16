@@ -13,14 +13,6 @@ The Pre-Registration Portal streamlines the identity registration process by all
 3. Notification and Acknowledgment System
 4. Registration Centers Data Integration and Synchronization
 
-## Services
-The Pre-Registration Portal includes the below list of the services
-1. [PreReg-Application](https://github.com/mosip/pre-registration/tree/release-1.3.x/pre-registration/pre-registration-application-service) - To handle all application related operations.
-2. [PreReg-Batchjob](https://github.com/mosip/pre-registration/tree/release-1.3.x/pre-registration/pre-registration-batchjob) - This BatchJob is used to run slot generation tasks on scheduled intervals.
-3. [PreReg-Capthca](https://github.com/mosip/pre-registration/tree/release-1.3.x/pre-registration/pre-registration-captcha-service) - Used to validate the Captcha in the Login flow.
-4. [PreReg-Core](https://github.com/mosip/pre-registration/tree/release-1.3.x/pre-registration/pre-registration-core) - This Service to handle all core related operations.
-5. [PreReg-Datasync](https://github.com/mosip/pre-registration/tree/release-1.3.x/pre-registration/pre-registration-datasync-service) - Retrieve all pre-registration ids based on registration client id, appointment date and an user type.
-
 ## Local Setup
 The project can be set up in two ways:
 
