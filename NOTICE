@@ -91,14 +91,14 @@ Homepage: [https://junit.org/junit5/](https://junit.org/junit5/)
 ================================================================================
 Package: H2 Database
 Version: 2.2.220
-License: MPL-2.0 or EPL-1.0 (Dual License)
+License: MPL-2.0
 Homepage: [https://www.h2database.com](https://www.h2database.com)
 ==================================================================
 
 ================================================================================
 Package: JavaMail API
 Version: 1.6.2
-License: CDDL 1.1 / GPL-2.0 with Classpath Exception
+License:GPL-2.0 with Classpath Exception
 Homepage: [https://eclipse-ee4j.github.io/mail/](https://eclipse-ee4j.github.io/mail/)
 ======================================================================================
 
