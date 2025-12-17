@@ -2,11 +2,24 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?branch=develop&project=mosip_pre-registration-ui&metric=alert_status)](https://sonarcloud.io/dashboard?branch=develop&id=mosip_pre-registration-ui)
 
 
-# Pre-Registration Portal
+## Overview
 
-This repository contains UI code for Pre-Registration portal. Refer [here](https://docs.mosip.io/1.2.0/modules/pre-registration/pre-registration-user-guide) for details about the functions that a resident can perform via this portal.
+MOSIP provides a reference implementation of the pre-registration portal that customized as per country needs. This repository contains UI code for Pre-Registration portal. 
 
-## Build &amp; Deployment Guide
+## Features
+The Pre-Registration portal Features are :
+1. Resident can login into PreRegistration with email id / phone number 
+2. Resident can create multiple PreRegistration application. 
+3. For each PreRegistration application, resident can give demographic data in multiple languages. 
+4. For each PreRegistration application, resident can upload various proof documents. 
+5. For each PreRegistration application, resident can search for a Registration Center and search for suitable appointment slots. 
+6. For each PreRegistration application, resident can book an appointment at suitable Registration Center 
+7. For every appointment booking, resident can get the acknowledgement as well as a notification via email id / phone number. 
+8. Resident can cancel the appointment or reschedule it as well.
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed:
 
 The code is written in Angular JS. 
   
@@ -35,7 +48,7 @@ The code is written in Angular JS.
   - Example: <code>docker run -d -p 8080:8080 --name nginx preregui</code>
 - Now you can access the user interface over the internet via browser.
   - Example: <code>http://localhost:8080/pre-registration-ui/#/eng</code>
-  
+
 ### For Local build:
 - Build & deploy the code locally – Follow the following steps to build the source code on your system.
   - Navigate to the pre-registration-ui directory inside the cloned repository. Then run the following command in that directory
@@ -66,3 +79,28 @@ The code is written in Angular JS.
   - Now start the server by typing <code>ng serve --proxy-config proxy.conf.json --ssl true</code>
   - Open the browser, load the app with <code>https://localhost:4200</code>
   
+## Deployment
+
+### Kubernetes
+
+To deploy Pre-Registration services on a Kubernetes cluster, refer to the [Sandbox Deployment Guide](https://docs.mosip.io/1.2.0/deploymentnew/v3-installation).
+
+## Documentation
+
+For more detailed documents for repositories, you can [check here](https://github.com/mosip/documentation/tree/1.2.0/docs).
+
+### Product Documentation
+
+To learn more about Pre-Registration portal from a functional perspective and use case scenarios, refer to our main documentation: [Click here](https://docs.mosip.io/1.2.0/id-lifecycle-management/identity-issuance/pre-registration).
+
+## Contribution & Community
+
+• To learn how you can contribute code to this application, [click here](https://docs.mosip.io/1.2.0/community/code-contributions).
+
+• If you have questions or encounter issues, visit the [MOSIP Community](https://community.mosip.io/) for support.
+
+• For any GitHub issues: [Report here](https://github.com/mosip/pre-registration-ui/issues)
+
+## License
+
+This project is licensed under the [Mozilla Public License 2.0](LICENSE).
