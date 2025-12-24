@@ -8,7 +8,7 @@ fi
 
 NS=prereg
 CHART_VERSION=1.3.0
-PREREG_GATEWAY_CHART_VERSION=1.0.0-develop
+PREREG_GATEWAY_CHART_VERSION=1.0.0
 
 echo Create $NS namespace
 kubectl create ns $NS
