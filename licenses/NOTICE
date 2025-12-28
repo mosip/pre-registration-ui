@@ -1,0 +1,162 @@
+================================================================================
+COPYRIGHT NOTICES
+================================================================================
+
+This software incorporates components from the projects listed below. The
+original copyright notices have been preserved in accordance with the terms
+of their respective licenses:
+
+Angular Framework & Ecosystem
+  Copyright (c) 2010-2018 Google, Inc.
+  Copyright (c) Microsoft Corporation
+  Copyright Google Inc.
+  Licensed under the MIT License
+
+TypeScript
+  Copyright (c) Microsoft Corporation
+  Licensed under the Apache License, Version 2.0
+
+RxJS (Reactive Extensions)
+  Copyright (c) 2015-2018 Google, Inc., Netflix, Inc., Microsoft Corp. and contributors
+  Licensed under the Apache License, Version 2.0
+
+Moment.js
+  Copyright (c) JS Foundation and other contributors
+  Licensed under the MIT License
+
+Lodash
+  Copyright (c) JS Foundation and other contributors
+  Licensed under the MIT License
+
+Hammerjs
+  Copyright (c) 2014 Jorik Tangelder
+  Licensed under the MIT License
+
+json-rules-engine
+  Copyright (c) 2016 Chris Olszewski
+  Licensed under the ISC License
+
+html2pdf.js
+  Copyright (c) 2017 Erik Koopmans
+  Licensed under the MIT License
+
+ng2-pdf-viewer
+  Copyright (c) 2016 Vadym Yatsyuk
+  Licensed under the MIT License
+
+ng-recaptcha
+  Copyright (c) 2016 Dmitriy Shekhovtsov
+  Licensed under the MIT License
+
+ngx-translate
+  Copyright (c) 2016 Olivier Combe
+  Licensed under the MIT License
+
+Bootstrap
+  Copyright (c) 2011-2018 Twitter, Inc.
+  Copyright (c) 2011-2018 The Bootstrap Authors
+  Licensed under the MIT License
+
+Webpack & Webpack Ecosystem
+  Copyright (c) JS Foundation and other contributors
+  Licensed under the MIT License
+
+Source Map Support
+  Copyright (c) 2014 Evan Wallace
+  Copyright 2009-2011 Mozilla Foundation and contributors
+  Licensed under the BSD-3-Clause License
+
+Karma Test Runner
+  Copyright (c) 2011-2018 Google, Inc.
+  Licensed under the MIT License
+
+Jasmine Testing Framework
+  Copyright (c) 2008-2018 Pivotal Labs
+  Licensed under the MIT License
+
+Protractor
+  Copyright (c) 2014 Google Inc.
+  Licensed under the MIT License
+
+core-js
+  Copyright (c) 2014-2018 Denis Pushkarev
+  Licensed under the MIT License
+
+tslib
+  Copyright (c) Microsoft Corporation
+  Licensed under the 0BSD License
+
+zone.js
+  Copyright (c) 2016 Google Inc.
+  Licensed under the MIT License
+
+Autoprefixer
+  Copyright 2013 Andrey Sitnik <andrey@sitnik.ru>
+  Licensed under the MIT License
+
+PostCSS
+  Copyright 2013 Andrey Sitnik <andrey@sitnik.ru>
+  Licensed under the MIT License
+
+ajv (JSON Schema Validator)
+  Copyright (c) 2015-2017 Evgeny Poberezkin
+  Licensed under the MIT License
+
+caniuse-lite
+  Copyright 2017 Ben Briggs
+  Licensed under the CC-BY-4.0 License
+
+request HTTP client
+  Copyright 2010-2012 Mikeal Rogers
+  Licensed under the Apache License, Version 2.0
+
+uuid
+  Copyright (c) 2010-2016 Robert Kieffer and other contributors
+  Licensed under the MIT License
+
+semver
+  Copyright (c) Isaac Z. Schlueter and Contributors
+  Licensed under the ISC License
+
+rimraf
+  Copyright (c) Isaac Z. Schlueter and Contributors
+  Licensed under the ISC License
+
+lru-cache
+  Copyright (c) Isaac Z. Schlueter and Contributors
+  Licensed under the ISC License
+
+yallist
+  Copyright (c) Isaac Z. Schlueter and Contributors
+  Licensed under the ISC License
+
+glob
+  Copyright (c) Isaac Z. Schlueter and Contributors
+  Licensed under the ISC License
+
+Node.js Buffer Implementation
+  Copyright (c) Feross Aboukhadijeh
+  Copyright (c) 2014 Dr. Ing. h.c. F. Porsche AG
+  Licensed under the MIT License
+
+webidl-conversions
+  Copyright (c) 2014 Domenic Denicola
+  Licensed under the BSD-2-Clause License
+
+normalize-package-data
+  Copyright (c) Meryn Stol
+  Licensed under the BSD-2-Clause License
+
+Through Streams
+  Copyright (c) 2011 Dominic Tarr
+  Licensed under the MIT License
+
+For complete license texts, please refer to the respective project homepages
+listed in the package information above or visit:
+  - MIT License: https://opensource.org/licenses/MIT
+  - Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0
+  - BSD-2-Clause: https://opensource.org/licenses/BSD-2-Clause
+  - BSD-3-Clause: https://opensource.org/licenses/BSD-3-Clause
+  - ISC License: https://opensource.org/licenses/ISC
+  - CC-BY-4.0: https://creativecommons.org/licenses/by/4.0/
+================================================================================
