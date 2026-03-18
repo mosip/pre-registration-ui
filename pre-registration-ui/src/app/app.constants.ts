@@ -58,7 +58,7 @@ export const APPEND_URL = {
   delete_lostuin: 'applications/lostuin/',
   delete_updateregistration: 'applications/updateregistration/',
   qr_code: 'qrCode/generate',
-  notification: 'notification',
+  notification: 'notification/v2',
   send_notification: 'notification/notify',
   master_data: '/masterdata/',
   auth: 'login/',
