@@ -135,6 +135,7 @@ export class DashBoardComponent implements OnInit, OnDestroy {
       this.autoLogout.getValues(this.userPreferredLangCode);
       this.autoLogout.continueWatching();
     }
+    this.autoLogout.startRegularValidation();  // Start regular validation, Added as part of MOSIP-37079
     this.regService.setSameAs("");
     this.name = this.configService.getConfigByKey(
       appConstants.CONFIG_KEYS.preregistration_identity_name
